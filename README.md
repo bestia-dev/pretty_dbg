@@ -5,7 +5,7 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **copy of the macro dbg!, just modified :#? to :# for pretty print**  
-***version: 1.0.47 date: 2024-02-02 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/pretty_dbg)***  
+***version: 1.0.49 date: 2024-02-02 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/pretty_dbg)***  
 
 [//]: # (auto_cargo_toml_to_md end)
 
@@ -21,8 +21,8 @@
  ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/000.svg)
 
 [//]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-21-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-1-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-20-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-216-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-3-purple.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-65-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-122-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)

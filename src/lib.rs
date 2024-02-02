@@ -1,20 +1,27 @@
 // pretty_dbg/src/lib.rs
 
 // region: auto_md_to_doc_comments include README.md A //!
-//! # macro pretty_dbg!()  
+//! # Rust macro pretty_dbg!()  
 //!
 //! **copy of the macro dbg!, just modified :#? to :# for pretty print**  
-//! ***version: 1.0.47 date: 2024-02-02 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/pretty_dbg)***  
+//! ***version: 1.0.49 date: 2024-02-02 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/pretty_dbg)***  
 //!
-//!  ![status](https://img.shields.io/badge/pre_alpha-red)
+//!  ![status](https://img.shields.io/badge/maintained-green)
+//!  ![status](https://img.shields.io/badge/ready_for_use-green)
 //!
-//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-21-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
-//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-1-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
+//!  [![crates.io](https://img.shields.io/crates/v/pretty_dbg.svg)](https://crates.io/crates/pretty_dbg)
+//!  [![Documentation](https://docs.rs/pretty_dbg/badge.svg)](https://docs.rs/pretty_dbg/)
+//!  [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/pretty_dbg.svg)](https://web.crev.dev/rust-reviews/crate/pretty_dbg/)
+//!  [![RustActions](https://github.com/bestia-dev/pretty_dbg/actions/workflows/rust_fmt_auto_build_test.yml/badge.svg)](https://github.com/bestia-dev/pretty_dbg/)
+//!  [![latest doc](https://img.shields.io/badge/latest_docs-GitHub-orange.svg)](https://bestia-dev.github.io/pretty_dbg/pretty_dbg/index.html)
+//!  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/pretty_dbg/blob/main/LICENSE)
+//!  ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/000.svg)
+//!
+//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-20-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
+//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-216-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
 //! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-3-purple.svg)](https://github.com/bestia-dev/pretty_dbg/)
 //! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-65-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
 //! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-122-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
-//!
-//! [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/pretty_dbg/blob/master/LICENSE)
 //!
 //! Hashtags: #rustlang #tutorial  
 //! My projects on GitHub are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).
@@ -189,18 +196,27 @@
 //! }
 //! ```
 //!
-//! ## new crate or not
+//! ## New crate in crates.io or not
 //!
 //! I think this is maybe too small to be made in a new crate.  
 //! It is just a small macro.  
 //! For now, I am just adding the code for this macro in my projects where I need it.  
+//! I changed my mind. I will publish a micro crate and I will make it exemplary because it is so small.  
+//! I will add tests, examples, playground code, documentation,... as well as I could.
 //!
-//! ## playing with the Rust Playground
+//! ## Playing with the Rust Playground
 //!
 //! Trying short Rust code in the Rust playground is great! It is fast and easy. It works just with a browser. Fantastic to show examples of real code, not just hypothetical code.  
 //! I first created Github Gists for my code examples. Every example must be in a separate Gist. Then I copy the Gist identification number into the playground link like this: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=d5d5e264b9143f4fde16594eaea1fa09> and it just works. Great!
 //!
 //! I want to avoid using `unwrap!` in my examples. Unwrap is a bad, bad habit.   Instead, I will use the crate `anyhow` and its types `Result` and `Error` directly in the main() function. So I can use the error propagation symbol `?` in the code like a pro.  
+//!
+//! ## Integration tests for err/std output
+//!
+//! Integration tests by default capture the std output and run in parallel. In my case, this is exactly what I don't want.  
+//! I need to capture the err/std output because this is the whole point of how the pretty_dbg! macro works. When working with the std/err output, code must not run in parallel because it would mix the output from different code and make it like scrambled eggs.  
+//! It took a while to modify the code in my automation tasks and the calling parameters to run the tests in this non-standard way.  
+//! I found the crate `gag` that can capture err/std output and I used a macro for my integration tests. This will come in handy for a lot of tests for CLI apps.  
 //!
 //! ## Open-source and free as a beer
 //!
