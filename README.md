@@ -10,7 +10,15 @@
 [//]: # (auto_cargo_toml_to_md end)
 
  ![status](https://img.shields.io/badge/maintained-green)
-![status](https://img.shields.io/badge/ready_for_use-green)
+ ![status](https://img.shields.io/badge/ready_for_use-green)
+
+ [![crates.io](https://img.shields.io/crates/v/pretty_dbg.svg)](https://crates.io/crates/pretty_dbg)
+ [![Documentation](https://docs.rs/pretty_dbg/badge.svg)](https://docs.rs/pretty_dbg/)
+ [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/pretty_dbg.svg)](https://web.crev.dev/rust-reviews/crate/pretty_dbg/)
+ [![RustActions](https://github.com/bestia-dev/pretty_dbg/actions/workflows/rust_fmt_auto_build_test.yml/badge.svg)](https://github.com/bestia-dev/pretty_dbg/)
+ [![latest doc](https://img.shields.io/badge/latest_docs-GitHub-orange.svg)](https://bestia-dev.github.io/pretty_dbg/pretty_dbg/index.html)
+ [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/pretty_dbg/blob/main/LICENSE)
+ ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/000.svg)
 
 [//]: # (auto_lines_of_code start)
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-21-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
@@ -20,8 +28,6 @@
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-122-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
 
 [//]: # (auto_lines_of_code end)
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/pretty_dbg/blob/master/LICENSE)
 
 Hashtags: #rustlang #tutorial  
 My projects on GitHub are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).

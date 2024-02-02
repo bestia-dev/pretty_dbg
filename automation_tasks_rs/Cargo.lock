@@ -147,7 +147,7 @@ dependencies = [
  "glob",
  "lazy_static",
  "radix64",
- "reader_for_microxml",
+ "pretty_dbg",
  "regex",
  "reqwest",
  "semver",
@@ -779,7 +779,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "reader_for_microxml"
+name = "pretty_dbg"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0d726a3f4c11def37106edaf44caf861a9012ebcd4eb6f748cc4fd93c2a15de1"
