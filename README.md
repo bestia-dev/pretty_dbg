@@ -5,7 +5,7 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **copy of the macro dbg!, just modified :#? to :# for pretty print**  
-***version: 1.0.40 date: 2024-02-01 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/pretty_dbg)***  
+***version: 1.0.40 date: 2024-02-01 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/pretty_dbg)***  
 
 [//]: # (auto_cargo_toml_to_md end)
 
@@ -25,7 +25,7 @@ My projects on GitHub are more like a tutorial than a finished product: [bestia-
 I love using the macro `dbg!()` in Rust. It is an easy way to temporarily print a value on the screen while programming. And when not needed anymore it is easy to search for all `dbg!` and erase or comment them.  
 In my last project, I had some JSON data. The macro from the standard library printed a humanly unreadable long string. This is not pretty! Even multiline strings are printed in one single line making it unreadable.
 
-Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=1d748ab042186f688f686ab00ec6b875):
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=a8f5eb34d97ec5818550f59af9a3c545):
 
 ```rust
 fn main() {
@@ -50,7 +50,8 @@ This is the unreadable output for a string:
 ```
 
 Now let's try with the serde_json::Value:
-Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=66bcd115904d10b866326f0bd4558a89):
+
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=c88ade301a7aa16bf27e7b8b9b6790ac):
 
 ```rust
 use serde_json;
@@ -79,7 +80,7 @@ This returns also an unreadable output:
 ```
 
 I know that `dbg!` under the hood is just a simple `eprintln!("{:#?}, json")`.
-And I know that I can print pretty JSON using `eprintln!("{:#}, json")` but then I don't express neatly my intent to `dbg!`. And I loose the possibility to search for `dbg!`.  
+And I know that I can print pretty JSON using `eprintln!("{:#}, json")` but then I don't express neatly my intent to `dbg!`. And I lose the possibility to search for `dbg!`.  
 
 I found a crate that colors the `dbg!` output and is really pretty: [dbg-pls](https://github.com/conradludgate/dbg-pls). That is maybe too much for my little project.  
 
@@ -87,7 +88,7 @@ I found a crate that colors the `dbg!` output and is really pretty: [dbg-pls](ht
 
 So I decided to copy the original macro `dbg!`, modify it a little bit, and give it the name `pretty_dbg!`.  
 
-Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3e4a93b3a852d3fb36d0d2c55da0bfba):
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=e9ef982465f717d9c5b642aead94a4ff):
 
 ```rust
 /// copy of the macro dbg!, just modified :#? to :# for pretty print
@@ -140,7 +141,8 @@ The output is now very pretty:
 ```
 
 Now let's try with the serde_json::Value:
-Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=0e810594e51d8babebe0d0013d51318d):
+
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=d5d5e264b9143f4fde16594eaea1fa09):
 
 ```rust
 use serde_json;
