@@ -1,6 +1,6 @@
 [//]: # (auto_md_to_doc_comments segment start A)
 
-# pretty_dbg  
+# macro pretty_dbg!()  
 
 [//]: # (auto_cargo_toml_to_md start)
 
