@@ -1,0 +1,30 @@
+[package]
+name = "pretty_dbg"
+version = "1.0.42"
+description = "copy of the macro dbg!, just modified :#? to :# for pretty print"
+authors = ["bestia.dev"]
+homepage = "https://bestia.dev"
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/bestia-dev/pretty_dbg"
+categories = ["programming", "development-tools::debugging","development-tools"]
+keywords = ["dbg","macro"]
+# publish to crates.io. Only this files.
+publish = true
+include = [
+    "Cargo.toml",
+    "LICENSE",
+    "README.md",
+    "src/*"
+]
+
+[dependencies]
+# no dependencies, it is just a macro
+# but it uses std - the standard library of Rust 
+
+[dev-dependencies]
+# only for test to capture the std output
+gag = "1.0.0"
+serde_json="1.0.113"
+anyhow="1.0.79"
