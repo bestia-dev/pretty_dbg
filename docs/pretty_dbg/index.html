@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="macro pretty_dbg!()"><title>pretty_dbg - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="pretty_dbg" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.1 (a28077b28 2023-12-04)" data-channel="1.74.1" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../pretty_dbg/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a></nav><nav class="sidebar"><a class="logo-container" href="../pretty_dbg/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate pretty_dbg</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 1.0.47</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#macros">Macros</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">pretty_dbg</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="src" href="../src/pretty_dbg/lib.rs.html#4-239">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="macro-pretty_dbg"><a href="#macro-pretty_dbg">macro pretty_dbg!()</a></h2>
+<p><strong>copy of the macro dbg!, just modified :#? to :# for pretty print</strong><br />
+<em><strong>version: 1.0.47 date: 2024-02-02 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href="https://github.com/bestia-dev/pretty_dbg">Github</a></strong></em></p>
+<p><img src="https://img.shields.io/badge/pre_alpha-red" alt="status" /></p>
+<p><a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_Rust-21-green.svg" alt="Lines in Rust code" /></a>
+<a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_Doc_comments-1-blue.svg" alt="Lines in Doc comments" /></a>
+<a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_comments-3-purple.svg" alt="Lines in Comments" /></a>
+<a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_examples-65-yellow.svg" alt="Lines in examples" /></a>
+<a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_tests-122-orange.svg" alt="Lines in tests" /></a></p>
+<p><a href="https://github.com/bestia-dev/pretty_dbg/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a></p>
+<p>Hashtags: #rustlang #tutorial<br />
+My projects on GitHub are more like a tutorial than a finished product: <a href="https://github.com/bestia-dev/tutorials_rust_wasm">bestia-dev tutorials</a>.</p>
+<h3 id="motivation"><a href="#motivation">Motivation</a></h3>
+<p>I love using the macro <code>dbg!()</code> in Rust. It is an easy way to temporarily print a value on the screen while programming. And when not needed anymore it is easy to search for all <code>dbg!</code> and erase or comment them.<br />
+In my last project, I had some JSON data. The macro from the standard library printed a humanly unreadable long string. This is not pretty! Even multiline strings are printed in one single line making it unreadable.</p>
+<p>Run this code in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=a8f5eb34d97ec5818550f59af9a3c545">rust playground</a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>main() {
+    <span class="kw">let </span>json_str = <span class="string">r#&quot;
+{
+    owner: &#39;bestia-dev&#39;,
+    repository_details: {
+        general: {
+        description: &#39;testing the creation of a github repo&#39;,
+        },
+    },
+}
+&quot;#</span>;
+    <span class="macro">dbg!</span>(json_str);
+}</code></pre></div>
+<p>This is the unreadable output for a string:</p>
+<div class="example-wrap"><pre class="language-output"><code>[src/main.rs:12] json_str = &quot;\n   {\n    owner: &#39;bestia-dev&#39;,\n    repository_details: {\n      general: {\n        description: &#39;testing the creation of a github repo&#39;,\n      },\n    },\n  }\n&quot;
+</code></pre></div>
+<p>Now let’s try with the serde_json::Value:</p>
+<p>Run this code in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=c88ade301a7aa16bf27e7b8b9b6790ac">rust playground</a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>serde_json;
+<span class="kw">use </span>anyhow::Result;
+
+<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), anyhow::Error&gt;{
+       <span class="kw">let </span>response_text =
+<span class="string">r#&quot;{
+    &quot;id&quot;: 1296269,
+    &quot;homepage&quot;: &quot;https://github.com&quot;
+}&quot;#</span>;
+    <span class="kw">let </span>parsed_json_value: serde_json::Value = serde_json::from_str(response_text)<span class="question-mark">?</span>;
+    <span class="macro">dbg!</span>(<span class="kw-2">&amp;</span>parsed_json_value);
+     
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<p>This returns also an unreadable output:</p>
+<div class="example-wrap"><pre class="language-output"><code>[src/main.rs:11] &amp;parsed_json_value = Object {
+    &quot;homepage&quot;: String(&quot;https://github.com&quot;),
+    &quot;id&quot;: Number(1296269),
+}
+</code></pre></div>
+<p>I know that <code>dbg!</code> under the hood is just a simple <code>eprintln!(&quot;{:#?}, json&quot;)</code>.
+And I know that I can print pretty JSON using <code>eprintln!(&quot;{:#}, json&quot;)</code> but then I don’t express neatly my intent to <code>dbg!</code>. And I lose the possibility to search for <code>dbg!</code>.</p>
+<p>I found a crate that colors the <code>dbg!</code> output and is really pretty: <a href="https://github.com/conradludgate/dbg-pls">dbg-pls</a>. That is maybe too much for my little project.</p>
+<h3 id="new-macro-pretty_dbg"><a href="#new-macro-pretty_dbg">new macro <code>pretty_dbg!</code></a></h3>
+<p>So I decided to copy the original macro <code>dbg!</code>, modify it a little bit, and give it the name <code>pretty_dbg!</code>.</p>
+<p>Run this code in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=e9ef982465f717d9c5b642aead94a4ff">rust playground</a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// copy of the macro dbg!, just modified :#? to :# for pretty print
+</span><span class="attr">#[macro_export]
+</span><span class="macro">macro_rules! </span>pretty_dbg {
+    () =&gt; {
+        <span class="macro">std::eprintln!</span>(<span class="string">&quot;[{}:{}]&quot;</span>, <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>())
+    };
+    (<span class="macro-nonterminal">$val</span>:expr $(,)<span class="question-mark">?</span>) =&gt; {
+        <span class="kw">match </span><span class="macro-nonterminal">$val </span>{
+            tmp =&gt; {
+                <span class="macro">std::eprintln!</span>(<span class="string">&quot;[{}:{}] {} = {:#}&quot;</span>,
+                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::stringify!</span>(<span class="macro-nonterminal">$val</span>), <span class="kw-2">&amp;</span>tmp);
+                tmp
+            }
+        }
+    };
+    ($(<span class="macro-nonterminal">$val</span>:expr),+ $(,)<span class="question-mark">?</span>) =&gt; {
+        ($(<span class="macro">std::pretty_dbg!</span>(<span class="macro-nonterminal">$val</span>)),+,)
+    };
+}
+
+<span class="kw">fn </span>main() {
+    <span class="kw">let </span>json_str = <span class="string">r#&quot;
+   {
+    owner: &#39;bestia-dev&#39;,
+    repository_details: {
+      general: {
+        description: &#39;testing the creation of a github repo&#39;,
+      },
+    },
+  }
+&quot;#</span>;
+    <span class="macro">pretty_dbg!</span>(json_str);
+}</code></pre></div>
+<p>The output is now very pretty:</p>
+<div class="example-wrap"><pre class="language-output"><code>[src/main.rs:32] json_str = 
+   {
+    owner: &#39;bestia-dev&#39;,
+    repository_details: {
+      general: {
+        description: &#39;testing the creation of a github repo&#39;,
+      },
+    },
+  }
+</code></pre></div>
+<p>Now let’s try with the serde_json::Value:</p>
+<p>Run this code in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=d5d5e264b9143f4fde16594eaea1fa09">rust playground</a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>serde_json;
+<span class="kw">use </span>anyhow::Result;
+
+<span class="doccomment">/// copy of the macro dbg!, just modified :#? to :# for pretty print
+</span><span class="attr">#[macro_export]
+</span><span class="macro">macro_rules! </span>pretty_dbg {
+    () =&gt; {
+        <span class="macro">std::eprintln!</span>(<span class="string">&quot;[{}:{}]&quot;</span>, <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>())
+    };
+    (<span class="macro-nonterminal">$val</span>:expr $(,)<span class="question-mark">?</span>) =&gt; {
+        <span class="kw">match </span><span class="macro-nonterminal">$val </span>{
+            tmp =&gt; {
+                <span class="macro">std::eprintln!</span>(<span class="string">&quot;[{}:{}] {} = {:#}&quot;</span>,
+                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::stringify!</span>(<span class="macro-nonterminal">$val</span>), <span class="kw-2">&amp;</span>tmp);
+                tmp
+            }
+        }
+    };
+    ($(<span class="macro-nonterminal">$val</span>:expr),+ $(,)<span class="question-mark">?</span>) =&gt; {
+        ($(<span class="macro">std::pretty_dbg!</span>(<span class="macro-nonterminal">$val</span>)),+,)
+    };
+}
+
+<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), anyhow::Error&gt;{
+       <span class="kw">let </span>response_text =
+<span class="string">r#&quot;{
+    &quot;id&quot;: 1296269,
+    &quot;homepage&quot;: &quot;https://github.com&quot;
+}&quot;#</span>;
+    <span class="kw">let </span>parsed_json_value: serde_json::Value = serde_json::from_str(response_text)<span class="question-mark">?</span>;
+    <span class="macro">pretty_dbg!</span>(<span class="kw-2">&amp;</span>parsed_json_value);
+     
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<p>The output is now pretty:</p>
+<div class="example-wrap"><pre class="language-output"><code>[src/main.rs:31] &amp;parsed_json_value = {
+  &quot;homepage&quot;: &quot;https://github.com&quot;,
+  &quot;id&quot;: 1296269
+}
+</code></pre></div><h3 id="new-crate-or-not"><a href="#new-crate-or-not">new crate or not</a></h3>
+<p>I think this is maybe too small to be made in a new crate.<br />
+It is just a small macro.<br />
+For now, I am just adding the code for this macro in my projects where I need it.</p>
+<h3 id="playing-with-the-rust-playground"><a href="#playing-with-the-rust-playground">playing with the Rust Playground</a></h3>
+<p>Trying short Rust code in the Rust playground is great! It is fast and easy. It works just with a browser. Fantastic to show examples of real code, not just hypothetical code.<br />
+I first created Github Gists for my code examples. Every example must be in a separate Gist. Then I copy the Gist identification number into the playground link like this: <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=d5d5e264b9143f4fde16594eaea1fa09">https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=d5d5e264b9143f4fde16594eaea1fa09</a> and it just works. Great!</p>
+<p>I want to avoid using <code>unwrap!</code> in my examples. Unwrap is a bad, bad habit.   Instead, I will use the crate <code>anyhow</code> and its types <code>Result</code> and <code>Error</code> directly in the main() function. So I can use the error propagation symbol <code>?</code> in the code like a pro.</p>
+<h3 id="open-source-and-free-as-a-beer"><a href="#open-source-and-free-as-a-beer">Open-source and free as a beer</a></h3>
+<p>My open-source projects are free as a beer (MIT license).<br />
+I just love programming.<br />
+But I need also to drink. If you find my projects and tutorials helpful, please buy me a beer by donating to my <a href="https://paypal.me/LucianoBestia">PayPal</a>.<br />
+You know the price of a beer in your local bar ;-)<br />
+So I can drink a free beer for your health :-)<br />
+<a href="https://translate.google.com/?hl=en&amp;sl=sl&amp;tl=en&amp;text=Na%20zdravje&amp;op=translate">Na zdravje!</a> <a href="https://dictionary.cambridge.org/dictionary/italian-english/alla-salute">Alla salute!</a> <a href="https://dictionary.cambridge.org/dictionary/german-english/prost">Prost!</a> <a href="https://matadornetwork.com/nights/how-to-say-cheers-in-50-languages/">Nazdravlje!</a> 🍻</p>
+<p><a href="https://bestia.dev">//bestia.dev</a><br />
+<a href="https://github.com/bestia-dev">//github.com/bestia-dev</a><br />
+<a href="https://bestiadev.substack.com">//bestiadev.substack.com</a><br />
+<a href="https://youtube.com/@bestia-dev-tutorials">//youtube.com/@bestia-dev-tutorials</a></p>
+</div></details><h2 id="macros" class="small-section-header"><a href="#macros">Macros</a></h2><ul class="item-table"><li><div class="item-name"><a class="macro" href="macro.pretty_dbg.html" title="macro pretty_dbg::pretty_dbg">pretty_dbg</a></div><div class="desc docblock-short">copy of the macro dbg!, just modified :#? to :# for pretty print</div></li></ul></section></div></main></body></html>

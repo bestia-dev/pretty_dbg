@@ -1,6 +1,6 @@
 [package]
 name = "pretty_dbg"
-version = "1.0.42"
+version = "1.0.47"
 description = "copy of the macro dbg!, just modified :#? to :# for pretty print"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"

@@ -1,8 +1,8 @@
 // tests/integration_test.rs
 
+use anyhow::Result;
 use pretty_dbg::*;
 use serde_json;
-use anyhow::Result;
 
 /// How to test functions that use println!()
 /// https://users.rust-lang.org/t/how-to-test-functions-that-use-println/67188/5
@@ -38,9 +38,8 @@ fn test_00_check_if_macro_assert_stderr_eq_works() {
 /// not pretty dbg! for multiline string
 #[test]
 fn test_01_macro_dbg_1() {
-    fn macro_dbg_1(){
-        let json_str = 
-r#"{
+    fn macro_dbg_1() {
+        let json_str = r#"{
     owner: 'bestia-dev',
     repository_details: {
         general: {
@@ -50,35 +49,32 @@ r#"{
 }"#;
         dbg!(json_str);
     }
-    assert_stderr_eq!(macro_dbg_1(), 
-"[tests/integration_test.rs:51] json_str = \"{\\n    owner: 'bestia-dev',\\n    repository_details: {\\n        general: {\\n        description: 'testing the creation of a github repo',\\n        },\\n    },\\n}\"\n");
+    assert_stderr_eq!(macro_dbg_1(),
+"[tests/integration_test.rs:50] json_str = \"{\\n    owner: 'bestia-dev',\\n    repository_details: {\\n        general: {\\n        description: 'testing the creation of a github repo',\\n        },\\n    },\\n}\"\n");
 }
-
 
 /// not pretty dbg! for serde_json::Value
 #[test]
 fn test_02_macro_dbg_2() {
-    fn macro_dbg_2() -> Result<(), anyhow::Error>{
-        let response_text =
- r#"{
+    fn macro_dbg_2() -> Result<(), anyhow::Error> {
+        let response_text = r#"{
      "id": 1296269,
      "homepage": "https://github.com"
  }"#;
-     let parsed_json_value: serde_json::Value = serde_json::from_str(response_text)?;
-     dbg!(&parsed_json_value);
-     
-     Ok(())
- }
-    assert_stderr_eq!(macro_dbg_2().unwrap(), 
-"[tests/integration_test.rs:68] &parsed_json_value = Object {\n    \"homepage\": String(\"https://github.com\"),\n    \"id\": Number(1296269),\n}\n");
+        let parsed_json_value: serde_json::Value = serde_json::from_str(response_text)?;
+        dbg!(&parsed_json_value);
+
+        Ok(())
+    }
+    assert_stderr_eq!(macro_dbg_2().unwrap(),
+"[tests/integration_test.rs:65] &parsed_json_value = Object {\n    \"homepage\": String(\"https://github.com\"),\n    \"id\": Number(1296269),\n}\n");
 }
 
 /// pretty_dbg! for multiline string
 #[test]
 fn test_03_macro_dbg_3() {
-    fn macro_dbg_3(){
-        let json_str = 
-r#"{
+    fn macro_dbg_3() {
+        let json_str = r#"{
     owner: 'bestia-dev',
     repository_details: {
     general: {
@@ -86,10 +82,11 @@ r#"{
         },
     },
 }"#;
-         pretty_dbg!(json_str);
- }
-    assert_stderr_eq!(macro_dbg_3(), 
-r#"[tests/integration_test.rs:89] json_str = {
+        pretty_dbg!(json_str);
+    }
+    assert_stderr_eq!(
+        macro_dbg_3(),
+        r#"[tests/integration_test.rs:85] json_str = {
     owner: 'bestia-dev',
     repository_details: {
     general: {
@@ -97,27 +94,29 @@ r#"[tests/integration_test.rs:89] json_str = {
         },
     },
 }
-"#);
+"#
+    );
 }
 
 /// pretty_dbg! for serde_json::Value
 #[test]
 fn test_04_macro_dbg_4() {
-    fn macro_dbg_4() -> Result<(), anyhow::Error>{
-        let response_text =
-r#"{
+    fn macro_dbg_4() -> Result<(), anyhow::Error> {
+        let response_text = r#"{
     "id": 1296269,
     "homepage": "https://github.com"
 }"#;
-            let parsed_json_value: serde_json::Value = serde_json::from_str(response_text)?;
-            pretty_dbg!(&parsed_json_value);
-            
-            Ok(())
- }
-    assert_stderr_eq!(macro_dbg_4().unwrap(), 
-r#"[tests/integration_test.rs:113] &parsed_json_value = {
+        let parsed_json_value: serde_json::Value = serde_json::from_str(response_text)?;
+        pretty_dbg!(&parsed_json_value);
+
+        Ok(())
+    }
+    assert_stderr_eq!(
+        macro_dbg_4().unwrap(),
+        r#"[tests/integration_test.rs:110] &parsed_json_value = {
   "homepage": "https://github.com",
   "id": 1296269
 }
-"#);
+"#
+    );
 }

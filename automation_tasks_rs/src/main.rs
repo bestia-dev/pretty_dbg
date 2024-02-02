@@ -49,9 +49,9 @@ fn match_arguments_and_call_tasks(mut args: std::env::Args) {
                 } else if &task == "commit_and_push" {
                     let arg_2 = args.next();
                     task_commit_and_push(arg_2);
-                /*
                 } else if &task == "publish_to_crates_io" {
                     task_publish_to_crates_io();
+                /*
                 } else if &task == "github_new_release" {
                     task_github_new_release();
                 */
@@ -78,13 +78,13 @@ fn print_help() {
 {GREEN}cargo auto test{RESET}{YELLOW} - runs all the tests{RESET}
 {GREEN}cargo auto commit_and_push "message"{RESET}{YELLOW} - commits with message and push with mandatory message{RESET}
     {YELLOW}(If you use SSH, it is easy to start the ssh-agent in the background and ssh-add your credentials for git.){RESET}
+{GREEN}cargo auto publish_to_crates_io{RESET}{YELLOW} - publish to crates.io, git tag
+    (You need credentials for publishing. On crates.io get the 'access token'. Then save it locally once and forever with the command 
+    ` cargo login TOKEN` use a space before the command to avoid saving the secret token in bash history.){RESET}
 
     {YELLOW}© 2024 bestia.dev  MIT License github.com/bestia-dev/cargo-auto{RESET}
 "#
 /*
-{GREEN}cargo auto publish_to_crates_io{RESET}{YELLOW} - publish to crates.io, git tag
-    (You need credentials for publishing. On crates.io get the 'access token'. Then save it locally once and forever with the command 
-    ` cargo login TOKEN` use a space before the command to avoid saving the secret token in bash history.){RESET}
 {GREEN}cargo auto github_new_release{RESET}{YELLOW} - creates new release on github
     This task needs PAT (personal access token from github) in the env variable:{RESET}
 {GREEN} export GITHUB_TOKEN=paste_token_here{RESET}
@@ -95,11 +95,15 @@ fn print_help() {
 
 /// all example commands in one place
 fn print_examples_cmd(){
-/*
-    println!(r#"{YELLOW}run examples:{RESET}
-{GREEN}cargo run --example example1{RESET}
+
+    println!(
+r#"{YELLOW}run examples:{RESET}
+{GREEN}cargo run --example macro_dbg_1{RESET}
+{GREEN}cargo run --example macro_dbg_2{RESET}
+{GREEN}cargo run --example macro_dbg_3{RESET}
+{GREEN}cargo run --example macro_dbg_4{RESET}
 "#);
-*/
+
 }
 
 /// sub-command for bash auto-completion of `cargo auto` using the crate `dev_bestia_cargo_completion`
@@ -128,26 +132,24 @@ fn completion() {
 
 /// cargo build
 fn task_build() {
-    let cargo_toml = CargoToml::read();
+    // let cargo_toml = CargoToml::read();
     auto_version_increment_semver_or_date();
     run_shell_command("cargo fmt");
     run_shell_command("cargo build");
     println!(
         r#"
-    {YELLOW}After `cargo auto build`, run the compiled binary, examples and/or tests{RESET}
-{GREEN}./target/debug/{package_name} new{RESET}
-{GREEN}./target/debug/{package_name} update_topics{RESET}
+    {YELLOW}After `cargo auto build`, run the examples and/or tests{RESET}
     {YELLOW}if ok, then{RESET}
 {GREEN}cargo auto release{RESET}
 "#,
-package_name = cargo_toml.package_name(),
+// package_name = cargo_toml.package_name(),
     );
     print_examples_cmd();
 }
 
 /// cargo build --release
 fn task_release() {
-    let cargo_toml = CargoToml::read();
+    // let cargo_toml = CargoToml::read();
     auto_version_increment_semver_or_date();
     auto_cargo_toml_to_md();
     auto_lines_of_code("");
@@ -161,12 +163,10 @@ fn task_release() {
     println!(
         r#"
     {YELLOW}After `cargo auto release`, run the compiled binary, examples and/or tests{RESET}
-{GREEN}./target/release/{package_name} new{RESET}
-{GREEN}./target/release/{package_name} update_topics{RESET}
     {YELLOW}if ok, then{RESET}
 {GREEN}cargo auto doc{RESET}
 "#,
-package_name = cargo_toml.package_name(),
+// package_name = cargo_toml.package_name(),
     );
     print_examples_cmd();
 }
@@ -229,7 +229,6 @@ fn task_commit_and_push(arg_2: Option<String>) {
     }
 }
 
-/*
 /// publish to crates.io and git tag
 fn task_publish_to_crates_io() {
     println!(r#"{YELLOW}The crates.io access token must already be saved locally with `cargo login TOKEN`{RESET}"#);
@@ -248,19 +247,17 @@ fn task_publish_to_crates_io() {
         r#"
     {YELLOW}After `cargo auto publish_to_crates_io`, check in browser{RESET}
 {GREEN}https://crates.io/crates/{package_name}{RESET}
-    {YELLOW}Install the crate with{RESET}
-{GREEN}cargo install {package_name}{RESET}
-    {YELLOW}and check how it works.{RESET}
+
     {YELLOW}Add the dependency{RESET}
 {GREEN}{package_name} = "{package_version}"{RESET}
     {YELLOW}to your Rust project and check how it works.{RESET}
-    {YELLOW}Then create the Github-Release and upload the assets.{RESET}    
-{GREEN}cargo auto github_new_release{RESET}
 "#,
         package_name = cargo_toml.package_name(),
         package_version = cargo_toml.package_version()
     );
 }
+
+/*
 
 /// create a new release on github
 fn task_github_new_release() {
