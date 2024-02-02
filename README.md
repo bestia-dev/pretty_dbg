@@ -25,7 +25,7 @@ My projects on GitHub are more like a tutorial than a finished product: [bestia-
 I love using the macro `dbg!()` in Rust. It is an easy way to temporarily print a value on the screen while programming. And when not needed anymore it is easy to search for all `dbg!` and erase or comment them.  
 In my last project, I had some JSON data. The macro from the standard library printed a humanly unreadable long string. This is not pretty! Even multiline strings are printed in one single line making it unreadable.
 
-Run this in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021):
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=1d748ab042186f688f686ab00ec6b875):
 
 ```rust
 fn main() {
@@ -50,7 +50,7 @@ This is the unreadable output for a string:
 ```
 
 Now let's try with the serde_json::Value:
-Run this in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021):
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=66bcd115904d10b866326f0bd4558a89):
 
 ```rust
 use serde_json;
@@ -87,7 +87,7 @@ I found a crate that colors the `dbg!` output and is really pretty: [dbg-pls](ht
 
 So I decided to copy the original macro `dbg!`, modify it a little bit, and give it the name `pretty_dbg!`.  
 
-Run this in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021):
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3e4a93b3a852d3fb36d0d2c55da0bfba):
 
 ```rust
 /// copy of the macro dbg!, just modified :#? to :# for pretty print
@@ -140,7 +140,7 @@ The output is now very pretty:
 ```
 
 Now let's try with the serde_json::Value:
-Run this in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021):
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=0e810594e51d8babebe0d0013d51318d):
 
 ```rust
 use serde_json;
