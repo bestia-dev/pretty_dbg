@@ -194,7 +194,14 @@ The output is now pretty:
 
 I think this is maybe too small to be made in a new crate.  
 It is just a small macro.  
-I am just adding the code for this macro in my projects where I need it.  
+For now, I am just adding the code for this macro in my projects where I need it.  
+
+## playing with the Rust Playground
+
+Trying short Rust code in the Rust playground is great! It is fast and easy. It works just with a browser. Fantastic to show examples of real code, not just hypothetical code.  
+I first created Github Gists for my code examples. Every example must be in a separate Gist. Then I copy the Gist identification number into the playground link like this: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=d5d5e264b9143f4fde16594eaea1fa09> and it just works. Great!
+
+I want to avoid using `unwrap!` in my examples. Unwrap is a bad, bad habit.   Instead, I will use the crate `anyhow` and its types `Result` and `Error` directly in the main() function. So I can use the error propagation symbol `?` in the code like a pro.  
 
 ## Open-source and free as a beer
 
