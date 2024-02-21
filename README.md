@@ -9,8 +9,8 @@
 
 [//]: # (auto_cargo_toml_to_md end)
 
- ![status](https://img.shields.io/badge/maintained-green)
- ![status](https://img.shields.io/badge/ready_for_use-green)
+ ![maintained](https://img.shields.io/badge/maintained-green)
+ ![ready_for_use](https://img.shields.io/badge/ready_for_use-green)
 
  [![crates.io](https://img.shields.io/crates/v/pretty_dbg.svg)](https://crates.io/crates/pretty_dbg)
  [![Documentation](https://docs.rs/pretty_dbg/badge.svg)](https://docs.rs/pretty_dbg/)
@@ -19,7 +19,7 @@
 
  [![latest doc](https://img.shields.io/badge/latest_docs-GitHub-orange.svg)](https://bestia-dev.github.io/pretty_dbg/pretty_dbg/index.html)
  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/pretty_dbg/blob/main/LICENSE)
- ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/000.svg)
+ ![pretty_dbg](https://bestia.dev/webpage_hit_counter/get_svg_image/1350166552.svg)
 
 [//]: # (auto_lines_of_code start)
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-20-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
