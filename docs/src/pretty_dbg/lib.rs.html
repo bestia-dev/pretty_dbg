@@ -106,15 +106,15 @@
 </span><span class="attr">#[macro_export]
 </span><span class="macro">macro_rules! </span>pretty_dbg {
     () =&gt; {
-        <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}]"</span>, <span class="macro">std::file!</span>(), <span class=
-"macro">std::line!</span>())
+        <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}]"</span>, <span class="macro">std::file!</span>(), <span class=
+"macro">std::line!</span>(), <span class="macro">std::column!</span>())
     };
     (<span class="macro-nonterminal">$val</span>:expr $(,)<span class="question-mark">?</span>) =&gt; {
         <span class="kw">match </span><span class="macro-nonterminal">$val </span>{
             tmp =&gt; {
-                <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}] {} = {:#}"</span>,
-                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::stringify!</span>(<span class=
-"macro-nonterminal">$val</span>), <span class="kw-2">&</span>tmp);
+                <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}] {} = {:#}"</span>,
+                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::column!</span>(), <span class=
+"macro">std::stringify!</span>(<span class="macro-nonterminal">$val</span>), <span class="kw-2">&</span>tmp);
                 tmp
             }
         }
@@ -125,12 +125,12 @@
 }
 
 <span class="doccomment">/// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
-/// Just like dbg!, it prefixes the stderr output with file! and line!
+/// Just like dbg!, it prefixes the stderr output with file!, line! and column!
 </span><span class="attr">#[macro_export]
 </span><span class="macro">macro_rules! </span>format_dbg {
     ($(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {{
-        <span class="macro">std::eprint!</span>(<span class="string">"[{}:{}] "</span>, <span class="macro">std::file!</span>(), <span class=
-"macro">std::line!</span>());
+        <span class="macro">std::eprint!</span>(<span class="string">"[{}:{}:{}] "</span>, <span class="macro">std::file!</span>(), <span class=
+"macro">std::line!</span>(), <span class="macro">std::column!</span>());
         <span class="macro">std::eprintln!</span>($(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>);
     }};
 }
