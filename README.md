@@ -98,7 +98,7 @@ And I know that I can print pretty JSON using `eprintln!("{:#}, json")` but then
 
 I found a crate that colors the `dbg!` output and is really pretty: [dbg-pls](https://github.com/conradludgate/dbg-pls). That is maybe too much for my little project.  
 
-## new macro `pretty_dbg!`
+## new pretty_dbg! macro
 
 So I decided to copy the original macro `dbg!`, modify it a little bit, and give it the name `pretty_dbg!`.  
 
@@ -204,7 +204,7 @@ The output is now pretty:
 }
 ```
 
-## format_dbg! macro
+## New format_dbg! macro
 
 Sometimes when debugging I want to write some string to the output and not only a variable.  
 The macro `dbg!` and consequently `pretty_dbg!` are not the right tools for that.  
@@ -267,7 +267,7 @@ I will add tests, examples, playground code, documentation,... as well as I coul
 Trying short Rust code in the Rust playground is great! It is fast and easy. It works just with a browser. Fantastic to show examples of real code, not just hypothetical code.  
 I first created Github Gists for my code examples. Every example must be in a separate Gist. Then I copy the Gist identification number into the playground link like this: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=d5d5e264b9143f4fde16594eaea1fa09> and it just works. Great!
 
-I want to avoid using `unwrap!` in my examples. Unwrap is a bad, bad habit.   Instead, I will use the crate `anyhow` and its types `Result` and `Error` directly in the main() function. So I can use the error propagation symbol `?` in the code like a pro.  
+I want to avoid using `unwrap()` in my examples. Unwrap is a bad, bad habit.   Instead, I will use the crate `anyhow` and its types `Result` and `Error` directly in the main() function. So I can use the error propagation symbol `?` in the code like a pro.  
 
 ## Integration tests for err/std output
 
@@ -275,6 +275,20 @@ Integration tests by default capture the std output and run in parallel. In my c
 I need to capture the err/std output because this is the whole point of how the pretty_dbg! macro works. When working with the std/err output, code must not run in parallel because it would mix the output from different code and make it like scrambled eggs.  
 It took a while to modify the code in my automation tasks and the calling parameters to run the tests in this non-standard way.  
 I found the crate `gag` that can capture err/std output and I used a macro for my integration tests. This will come in handy for a lot of tests for CLI apps.  
+
+## Development details
+
+Read the development details in a separate md file:  
+[DEVELOPMENT.md](https://github.com/bestia-dev/pretty_dbg/blob/main/DEVELOPMENT.md)
+
+## Releases changelog
+
+Read the changelog in a separate md file:  
+[RELEASES.md](https://github.com/bestia-dev/pretty_dbg/blob/main/RELEASES.md)
+
+## TODO
+
+Nothing big in the near future.
 
 ## Open-source and free as a beer
 
