@@ -86,7 +86,7 @@ fn test_03_macro_pretty_dbg_1() {
     }
     assert_stderr_eq!(
         macro_pretty_dbg_1(),
-        r#"[tests/integration_test.rs:85] json_str = {
+        r#"[tests/integration_test.rs:85:9] json_str = {
     owner: 'bestia-dev',
     repository_details: {
     general: {
@@ -113,7 +113,7 @@ fn test_04_macro_pretty_dbg_2() {
     }
     assert_stderr_eq!(
         macro_pretty_dbg_2().unwrap(),
-        r#"[tests/integration_test.rs:110] &parsed_json_value = {
+        r#"[tests/integration_test.rs:110:9] &parsed_json_value = {
   "homepage": "https://github.com",
   "id": 1296269
 }
@@ -135,8 +135,8 @@ fn test_05_macro_format_dbg_1() {
     assert_stderr_eq!(
         macro_format_dbg_1().unwrap(),
         r#"[tests/integration_test.rs:130:9] "using the dbg! macro : {val}" = "using the dbg! macro : {val}"
-[tests/integration_test.rs:131] "using the pretty_dbg! macro : {val}" = using the pretty_dbg! macro : {val}
-[tests/integration_test.rs:132] using the format_dbg! macro : 123456789
+[tests/integration_test.rs:131:9] "using the pretty_dbg! macro : {val}" = using the pretty_dbg! macro : {val}
+[tests/integration_test.rs:132:9] using the format_dbg! macro : 123456789
 "#
     );
 }

@@ -14,13 +14,13 @@
 #[macro_export]
 macro_rules! pretty_dbg {
     () => {
-        std::eprintln!("[{}:{}]", std::file!(), std::line!())
+        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
     };
     ($val:expr $(,)?) => {
         match $val {
             tmp => {
-                std::eprintln!("[{}:{}] {} = {:#}",
-                    std::file!(), std::line!(), std::stringify!($val), &tmp);
+                std::eprintln!("[{}:{}:{}] {} = {:#}",
+                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &tmp);
                 tmp
             }
         }
@@ -31,11 +31,11 @@ macro_rules! pretty_dbg {
 }
 
 /// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
-/// Just like dbg!, it prefixes the stderr output with file! and line!
+/// Just like dbg!, it prefixes the stderr output with file!, line! and column!
 #[macro_export]
 macro_rules! format_dbg {
     ($($arg:tt)*) => {{
-        std::eprint!("[{}:{}] ", std::file!(), std::line!());
+        std::eprint!("[{}:{}:{}] ", std::file!(), std::line!(), std::column!());
         std::eprintln!($($arg)*);
     }};
 }

@@ -31,6 +31,7 @@
         "deps",
         "developmenttool",
         "endregion",
+        "eprint",
         "eprintln",
         "ffmpeg",
         "filetime",
