@@ -4,8 +4,9 @@
 // #![doc(html_logo_url = "https://github.com/bestia-dev/cargo-auto/raw/main/images/logo/logo_cargo_auto.svg")]
 // even favicon ico can be changed
 // #![doc(html_favicon_url = "/logo.ico")]
-// playground for examples
-#![doc(html_playground_url = "https://play.rust-lang.org/")]
+// playground for examples. Warning: It didn't work well for me. And it works only in docs. Not in Github and not in crates.io.
+// I will not use it. I will crate a gist and use that for the playground. That works flawlessly. Maybe create an automation task?
+// #![doc(html_playground_url = "https://play.rust-lang.org/")]
 // example how to insert a svg file inside the documentation
 // #![doc=include_str!("shared-bus.svg")]
 #![doc=include_str!("../README.md")]

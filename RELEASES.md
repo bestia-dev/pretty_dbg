@@ -10,6 +10,10 @@ The TODO section is part of the [README.md](https://github.com/bestia-dev/pretty
 
 ## Unreleased
 
+## Version 1.0.54 (2024-02-22)
+
+- add column!, just like the new dbg!
+
 ## Version 1.0.53 (2024-02-22)
 
 - add format_dbg! macro
