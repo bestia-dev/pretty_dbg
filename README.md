@@ -5,7 +5,7 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **copy of the macro dbg!, just modified :#? to :# for pretty print**  
-***version: 1.0.49 date: 2024-02-02 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/pretty_dbg)***  
+***version: 1.0.53 date: 2024-02-22 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/pretty_dbg)***  
 
 [//]: # (auto_cargo_toml_to_md end)
 
@@ -22,11 +22,11 @@
  ![pretty_dbg](https://bestia.dev/webpage_hit_counter/get_svg_image/1350166552.svg)
 
 [//]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-20-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-216-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-3-purple.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-65-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-122-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-30-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-3-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-8-purple.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-77-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-142-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
 
 [//]: # (auto_lines_of_code end)
 
@@ -35,7 +35,8 @@ My projects on GitHub are more like a tutorial than a finished product: [bestia-
 
 ## Motivation
 
-I love using the macro `dbg!()` in Rust. It is an easy way to temporarily print a value on the screen while programming. And when not needed anymore it is easy to search for all `dbg!` and erase or comment them.  
+I love using the macro `dbg!()` in Rust. It is an easy way to temporarily print a value on the screen while programming and debugging.  
+When not needed anymore it is easy to search for all `dbg!` and erase or comment them.  
 In my last project, I had some JSON data. The macro from the standard library printed a humanly unreadable long string. This is not pretty! Even multiline strings are printed in one single line making it unreadable.
 
 Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=a8f5eb34d97ec5818550f59af9a3c545):
@@ -203,11 +204,61 @@ The output is now pretty:
 }
 ```
 
+## format_dbg! macro
+
+Sometimes when debugging I want to write some string to the output and not only a variable.  
+The macro `dbg!` and consequently `pretty_dbg!` are not the right tools for that.  
+
+Again I could use simply the `eprintln!`, but then it is not easy to find and remove this debugging code.  
+Let's make another macro `format_dbg!`. It is just a simpler `dbg!` with another name.
+
+Run this code in the [rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=89ac8ec47ac972d4812e28846c803628):
+
+```rust
+fn main() {
+/// copy of the macro dbg!, just modified :#? to :# for pretty print
+#[macro_export]
+macro_rules! pretty_dbg {
+    () => {
+        std::eprintln!("[{}:{}]", std::file!(), std::line!())
+    };
+    ($val:expr $(,)?) => {
+        match $val {
+            tmp => {
+                std::eprintln!("[{}:{}] {} = {:#}",
+                    std::file!(), std::line!(), std::stringify!($val), &tmp);
+                tmp
+            }
+        }
+    };
+    ($($val:expr),+ $(,)?) => {
+        ($(std::pretty_dbg!($val)),+,)
+    };
+}
+
+/// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
+/// Just like dbg!, it prefixes the stderr output with file! and line!
+#[macro_export]
+macro_rules! format_dbg {
+    ($($arg:tt)*) => {{
+        std::eprint!("[{}:{}] ", std::file!(), std::line!());
+        std::eprintln!($($arg)*);
+    }};
+}
+    let val="123456789";
+
+    dbg!("using the dbg! macro : {val}");
+    pretty_dbg!("using the pretty_dbg! macro : {val}");
+    format_dbg!("using the format_dbg! macro : {val}");
+}
+```
+
 ## New crate in crates.io or not
 
 I think this is maybe too small to be made in a new crate.  
 It is just a small macro.  
 For now, I am just adding the code for this macro in my projects where I need it.  
+
 I changed my mind. I will publish a micro crate and I will make it exemplary because it is so small.  
 I will add tests, examples, playground code, documentation,... as well as I could.
 

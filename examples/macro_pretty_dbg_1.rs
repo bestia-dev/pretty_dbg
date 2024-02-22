@@ -1,4 +1,4 @@
-// examples/macro_dbg_3.rs
+// examples/macro_pretty_dbg_1.rs
 
 use pretty_dbg::pretty_dbg;
 

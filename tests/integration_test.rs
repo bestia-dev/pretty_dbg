@@ -50,7 +50,7 @@ fn test_01_macro_dbg_1() {
         dbg!(json_str);
     }
     assert_stderr_eq!(macro_dbg_1(),
-"[tests/integration_test.rs:50] json_str = \"{\\n    owner: 'bestia-dev',\\n    repository_details: {\\n        general: {\\n        description: 'testing the creation of a github repo',\\n        },\\n    },\\n}\"\n");
+"[tests/integration_test.rs:50:9] json_str = \"{\\n    owner: 'bestia-dev',\\n    repository_details: {\\n        general: {\\n        description: 'testing the creation of a github repo',\\n        },\\n    },\\n}\"\n");
 }
 
 /// not pretty dbg! for serde_json::Value
@@ -67,13 +67,13 @@ fn test_02_macro_dbg_2() {
         Ok(())
     }
     assert_stderr_eq!(macro_dbg_2().unwrap(),
-"[tests/integration_test.rs:65] &parsed_json_value = Object {\n    \"homepage\": String(\"https://github.com\"),\n    \"id\": Number(1296269),\n}\n");
+"[tests/integration_test.rs:65:9] &parsed_json_value = Object {\n    \"homepage\": String(\"https://github.com\"),\n    \"id\": Number(1296269),\n}\n");
 }
 
 /// pretty_dbg! for multiline string
 #[test]
-fn test_03_macro_dbg_3() {
-    fn macro_dbg_3() {
+fn test_03_macro_pretty_dbg_1() {
+    fn macro_pretty_dbg_1() {
         let json_str = r#"{
     owner: 'bestia-dev',
     repository_details: {
@@ -85,7 +85,7 @@ fn test_03_macro_dbg_3() {
         pretty_dbg!(json_str);
     }
     assert_stderr_eq!(
-        macro_dbg_3(),
+        macro_pretty_dbg_1(),
         r#"[tests/integration_test.rs:85] json_str = {
     owner: 'bestia-dev',
     repository_details: {
@@ -100,8 +100,8 @@ fn test_03_macro_dbg_3() {
 
 /// pretty_dbg! for serde_json::Value
 #[test]
-fn test_04_macro_dbg_4() {
-    fn macro_dbg_4() -> Result<(), anyhow::Error> {
+fn test_04_macro_pretty_dbg_2() {
+    fn macro_pretty_dbg_2() -> Result<(), anyhow::Error> {
         let response_text = r#"{
     "id": 1296269,
     "homepage": "https://github.com"
@@ -112,11 +112,31 @@ fn test_04_macro_dbg_4() {
         Ok(())
     }
     assert_stderr_eq!(
-        macro_dbg_4().unwrap(),
+        macro_pretty_dbg_2().unwrap(),
         r#"[tests/integration_test.rs:110] &parsed_json_value = {
   "homepage": "https://github.com",
   "id": 1296269
 }
+"#
+    );
+}
+
+/// format_dbg! in comparison with dbg! and pretty_dbg!
+#[test]
+fn test_05_macro_format_dbg_1() {
+    fn macro_format_dbg_1() -> Result<(), anyhow::Error> {
+        let val = "123456789";
+
+        dbg!("using the dbg! macro : {val}");
+        pretty_dbg!("using the pretty_dbg! macro : {val}");
+        format_dbg!("using the format_dbg! macro : {val}");
+        Ok(())
+    }
+    assert_stderr_eq!(
+        macro_format_dbg_1().unwrap(),
+        r#"[tests/integration_test.rs:130:9] "using the dbg! macro : {val}" = "using the dbg! macro : {val}"
+[tests/integration_test.rs:131] "using the pretty_dbg! macro : {val}" = using the pretty_dbg! macro : {val}
+[tests/integration_test.rs:132] using the format_dbg! macro : 123456789
 "#
     );
 }

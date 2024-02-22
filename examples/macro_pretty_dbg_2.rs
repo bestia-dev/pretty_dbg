@@ -1,8 +1,8 @@
-// examples/macro_dbg_4.rs
+// examples/macro_pretty_dbg_2.rs
 
 use pretty_dbg::pretty_dbg;
 
-// cargo run --example macro_dbg_4
+// cargo run --example macro_pretty_dbg_2
 fn main() -> Result<(), anyhow::Error> {
     let response_text = r#"{
     "id": 1296269,
