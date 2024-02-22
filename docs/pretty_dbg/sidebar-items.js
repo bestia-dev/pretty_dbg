@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":["pretty_dbg"]};
+window.SIDEBAR_ITEMS = {"macro":["format_dbg","pretty_dbg"]};
