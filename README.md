@@ -250,6 +250,13 @@ macro_rules! format_dbg {
 
 [//]: # (auto_playground end)
 
+The output:
+
+```output
+[src/main.rs:13:5] "using the dbg! macro : {val}" = "using the dbg! macro : {val}"
+[src/main.rs:14:5] using the format_dbg! macro : 123456789
+```
+
 ## New crate in crates.io or not
 
 I think this is maybe too small to be made in a new crate.  

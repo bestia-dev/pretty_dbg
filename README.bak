@@ -228,7 +228,7 @@ Let's make another macro `format_dbg!`. It is just a simpler `dbg!` with another
 
 [//]: # (auto_playground start)
 
-Run this code in the [Rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20copy%20of%20the%20macro%20dbg%21%2C%20just%20modified%20%3A%23%3F%20to%20%3A%23%20for%20pretty%20print%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20pretty_dbg%20%7B%0A%20%20%20%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24val%3Aexpr%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20match%20%24val%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%7B%7D%20%3D%20%7B%3A%23%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%2C%20std%3A%3Astringify%21%28%24val%29%2C%20%26tmp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tmp%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24%28%24val%3Aexpr%29%2C%2B%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%28%24%28std%3A%3Apretty_dbg%21%28%24val%29%29%2C%2B%2C%29%0A%20%20%20%20%7D%3B%0A%7D%0A%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20pretty_dbg%21%28%22using%20the%20pretty_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D):
+Run this code in the [Rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D):
 
 ```Rust
 fn main() {
@@ -249,6 +249,13 @@ macro_rules! format_dbg {
 ```
 
 [//]: # (auto_playground end)
+
+The output:
+
+```output
+[src/main.rs:13:5] "using the dbg! macro : {val}" = "using the dbg! macro : {val}"
+[src/main.rs:14:5] using the format_dbg! macro : 123456789
+```
 
 ## New crate in crates.io or not
 
