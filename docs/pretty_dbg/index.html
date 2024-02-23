@@ -97,8 +97,8 @@
             "Lines in Rust code"></a> <a href="https://github.com/bestia-dev/pretty_dbg/"><img src=
             "https://img.shields.io/badge/Lines_in_Doc_comments-3-blue.svg" alt="Lines in Doc comments"></a> <a href=
             "https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_comments-10-purple.svg" alt="Lines in Comments"></a>
-            <a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_examples-77-yellow.svg" alt=
-            "Lines in examples"></a> <a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_tests-142-orange.svg"
+            <a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_examples-76-yellow.svg" alt=
+            "Lines in examples"></a> <a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_tests-140-orange.svg"
             alt="Lines in tests"></a></p>
             <p>Hashtags: #rustlang #tutorial<br>
             My projects on GitHub are more like a tutorial than a finished product: <a href="https://github.com/bestia-dev/tutorials_rust_wasm">bestia-dev
@@ -277,30 +277,10 @@ r#"{
             <p>Again I could use simply the <code>eprintln!</code>, but then it is not easy to find and remove this debugging code.<br>
             Let’s make another macro <code>format_dbg!</code>. It is just a simpler <code>dbg!</code> with another name.</p>
             <p>Run this code in the <a href=
-            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20copy%20of%20the%20macro%20dbg%21%2C%20just%20modified%20%3A%23%3F%20to%20%3A%23%20for%20pretty%20print%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20pretty_dbg%20%7B%0A%20%20%20%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24val%3Aexpr%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20match%20%24val%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%7B%7D%20%3D%20%7B%3A%23%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%2C%20std%3A%3Astringify%21%28%24val%29%2C%20%26tmp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tmp%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24%28%24val%3Aexpr%29%2C%2B%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%28%24%28std%3A%3Apretty_dbg%21%28%24val%29%29%2C%2B%2C%29%0A%20%20%20%20%7D%3B%0A%7D%0A%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20pretty_dbg%21%28%22using%20the%20pretty_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D">
+            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D">
             Rust playground</a>:</p>
             <div class="example-wrap">
               <pre class="language-Rust"><code>fn main() {
-/// copy of the macro dbg!, just modified :#? to :# for pretty print
-#[macro_export]
-macro_rules! pretty_dbg {
-    () =&gt; {
-        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
-    };
-    ($val:expr $(,)?) =&gt; {
-        match $val {
-            tmp =&gt; {
-                std::eprintln!("[{}:{}:{}] {} = {:#}",
-                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &amp;tmp);
-                tmp
-            }
-        }
-    };
-    ($($val:expr),+ $(,)?) =&gt; {
-        ($(std::pretty_dbg!($val)),+,)
-    };
-}
-
 /// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
 /// Just like dbg!, it prefixes the stderr output with file!, line! and column!
 #[macro_export]
@@ -313,7 +293,6 @@ macro_rules! format_dbg {
     let val="123456789";
 
     dbg!("using the dbg! macro : {val}");
-    pretty_dbg!("using the pretty_dbg! macro : {val}");
     format_dbg!("using the format_dbg! macro : {val}");
 }
 </code></pre>
