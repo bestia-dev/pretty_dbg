@@ -23,8 +23,8 @@
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-29-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-3-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-10-purple.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-77-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-142-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-76-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-140-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
 
 [//]: # (auto_lines_of_code end)
 
@@ -232,26 +232,6 @@ Run this code in the [Rust playground](https://play.rust-lang.org/?version=stabl
 
 ```Rust
 fn main() {
-/// copy of the macro dbg!, just modified :#? to :# for pretty print
-#[macro_export]
-macro_rules! pretty_dbg {
-    () => {
-        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
-    };
-    ($val:expr $(,)?) => {
-        match $val {
-            tmp => {
-                std::eprintln!("[{}:{}:{}] {} = {:#}",
-                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &tmp);
-                tmp
-            }
-        }
-    };
-    ($($val:expr),+ $(,)?) => {
-        ($(std::pretty_dbg!($val)),+,)
-    };
-}
-
 /// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
 /// Just like dbg!, it prefixes the stderr output with file!, line! and column!
 #[macro_export]
@@ -264,7 +244,6 @@ macro_rules! format_dbg {
     let val="123456789";
 
     dbg!("using the dbg! macro : {val}");
-    pretty_dbg!("using the pretty_dbg! macro : {val}");
     format_dbg!("using the format_dbg! macro : {val}");
 }
 ```

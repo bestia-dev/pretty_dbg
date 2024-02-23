@@ -128,15 +128,13 @@ fn test_05_macro_format_dbg_1() {
         let val = "123456789";
 
         dbg!("using the dbg! macro : {val}");
-        pretty_dbg!("using the pretty_dbg! macro : {val}");
         format_dbg!("using the format_dbg! macro : {val}");
         Ok(())
     }
     assert_stderr_eq!(
         macro_format_dbg_1().unwrap(),
         r#"[tests/integration_test.rs:130:9] "using the dbg! macro : {val}" = "using the dbg! macro : {val}"
-[tests/integration_test.rs:131:9] "using the pretty_dbg! macro : {val}" = using the pretty_dbg! macro : {val}
-[tests/integration_test.rs:132:9] using the format_dbg! macro : 123456789
+[tests/integration_test.rs:131:9] using the format_dbg! macro : 123456789
 "#
     );
 }

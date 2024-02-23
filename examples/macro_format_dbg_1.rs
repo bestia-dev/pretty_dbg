@@ -7,6 +7,5 @@ fn main() {
     let val = "123456789";
 
     dbg!("using the dbg! macro : {val}");
-    pretty_dbg!("using the pretty_dbg! macro : {val}");
     format_dbg!("using the format_dbg! macro : {val}");
 }

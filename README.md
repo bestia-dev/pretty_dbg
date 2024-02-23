@@ -23,8 +23,8 @@
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-29-green.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-3-blue.svg)](https://github.com/bestia-dev/pretty_dbg/)
 [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-10-purple.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-77-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-142-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-76-yellow.svg)](https://github.com/bestia-dev/pretty_dbg/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-140-orange.svg)](https://github.com/bestia-dev/pretty_dbg/)
 
 [//]: # (auto_lines_of_code end)
 
@@ -228,30 +228,10 @@ Let's make another macro `format_dbg!`. It is just a simpler `dbg!` with another
 
 [//]: # (auto_playground start)
 
-Run this code in the [Rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20copy%20of%20the%20macro%20dbg%21%2C%20just%20modified%20%3A%23%3F%20to%20%3A%23%20for%20pretty%20print%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20pretty_dbg%20%7B%0A%20%20%20%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24val%3Aexpr%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20match%20%24val%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%7B%7D%20%3D%20%7B%3A%23%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%2C%20std%3A%3Astringify%21%28%24val%29%2C%20%26tmp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tmp%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24%28%24val%3Aexpr%29%2C%2B%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%28%24%28std%3A%3Apretty_dbg%21%28%24val%29%29%2C%2B%2C%29%0A%20%20%20%20%7D%3B%0A%7D%0A%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20pretty_dbg%21%28%22using%20the%20pretty_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D):
+Run this code in the [Rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D):
 
 ```Rust
 fn main() {
-/// copy of the macro dbg!, just modified :#? to :# for pretty print
-#[macro_export]
-macro_rules! pretty_dbg {
-    () => {
-        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
-    };
-    ($val:expr $(,)?) => {
-        match $val {
-            tmp => {
-                std::eprintln!("[{}:{}:{}] {} = {:#}",
-                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &tmp);
-                tmp
-            }
-        }
-    };
-    ($($val:expr),+ $(,)?) => {
-        ($(std::pretty_dbg!($val)),+,)
-    };
-}
-
 /// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
 /// Just like dbg!, it prefixes the stderr output with file!, line! and column!
 #[macro_export]
@@ -264,7 +244,6 @@ macro_rules! format_dbg {
     let val="123456789";
 
     dbg!("using the dbg! macro : {val}");
-    pretty_dbg!("using the pretty_dbg! macro : {val}");
     format_dbg!("using the format_dbg! macro : {val}");
 }
 ```
