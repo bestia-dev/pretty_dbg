@@ -297,6 +297,12 @@ macro_rules! format_dbg {
 }
 </code></pre>
             </div>
+            <p>The output:</p>
+            <div class="example-wrap">
+              <pre class="language-output"><code>[src/main.rs:13:5] "using the dbg! macro : {val}" = "using the dbg! macro : {val}"
+[src/main.rs:14:5] using the format_dbg! macro : 123456789
+</code></pre>
+            </div>
             <h3 id="new-crate-in-cratesio-or-not"><a href="#new-crate-in-cratesio-or-not">New crate in crates.io or not</a></h3>
             <p>I think this is maybe too small to be made in a new crate.<br>
             It is just a small macro.<br>
