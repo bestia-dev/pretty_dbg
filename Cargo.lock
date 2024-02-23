@@ -83,7 +83,7 @@ checksum = "01cda141df6706de531b6c46c3a33ecca755538219bd484262fa09410c13539c"
 
 [[package]]
 name = "pretty_dbg"
-version = "1.0.54"
+version = "1.0.55"
 dependencies = [
  "anyhow",
  "gag",

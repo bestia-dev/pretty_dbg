@@ -9,6 +9,7 @@ The ongoing changes that are not released, are visible in the git commits and gi
 The TODO section is part of the [README.md](https://github.com/bestia-dev/pretty_dbg).  
 
 ## Unreleased
+- auto_playground
 
 ## Version 1.0.54 (2024-02-22)
 
