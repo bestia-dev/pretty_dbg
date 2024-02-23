@@ -32,7 +32,7 @@
   </nav>
   <nav class="sidebar">
     <div class="sidebar-crate">
-      <h2><a href="../pretty_dbg/index.html">pretty_dbg</a><span class="version">1.0.54</span></h2>
+      <h2><a href="../pretty_dbg/index.html">pretty_dbg</a><span class="version">1.0.55</span></h2>
     </div>
     <div class="sidebar-elems">
       <ul class="block">
@@ -70,7 +70,7 @@
         <div class="main-heading">
           <h1>Crate <a class="mod" href="#">pretty_dbg</a><button id="copy-path" title="Copy item path to clipboard"><img src=
           "../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="src"
-          href="../src/pretty_dbg/lib.rs.html#8-41">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>−</span>]</button></span>
+          href="../src/pretty_dbg/lib.rs.html#12-42">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>−</span>]</button></span>
         </div>
         <details class="toggle top-doc" open="">
           <summary class="hideme">
@@ -80,7 +80,7 @@
             <h2 id="rust-macro-pretty_dbg"><a href="#rust-macro-pretty_dbg">Rust macro pretty_dbg!()</a></h2>
             <p><strong>pretty_dbg! is a copy of dbg!, just modified :#? to :# for pretty print. format_dbg! works like eprintln! with added file, line and
             column</strong><br>
-            <em><strong>version: 1.0.54 date: 2024-02-22 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href=
+            <em><strong>version: 1.0.55 date: 2024-02-23 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href=
             "https://github.com/bestia-dev/pretty_dbg">GitHub</a></strong></em></p>
             <p><img src="https://img.shields.io/badge/maintained-green" alt="maintained"> <img src="https://img.shields.io/badge/ready_for_use-green" alt=
             "ready_for_use"></p>
@@ -93,10 +93,10 @@
             alt="latest doc"></a> <a href="https://github.com/bestia-dev/pretty_dbg/blob/main/LICENSE"><img src=
             "https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a> <img src=
             "https://bestia.dev/webpage_hit_counter/get_svg_image/1350166552.svg" alt="pretty_dbg"></p>
-            <p><a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_Rust-30-green.svg" alt=
+            <p><a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_Rust-29-green.svg" alt=
             "Lines in Rust code"></a> <a href="https://github.com/bestia-dev/pretty_dbg/"><img src=
             "https://img.shields.io/badge/Lines_in_Doc_comments-3-blue.svg" alt="Lines in Doc comments"></a> <a href=
-            "https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_comments-8-purple.svg" alt="Lines in Comments"></a>
+            "https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_comments-10-purple.svg" alt="Lines in Comments"></a>
             <a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_examples-77-yellow.svg" alt=
             "Lines in examples"></a> <a href="https://github.com/bestia-dev/pretty_dbg/"><img src="https://img.shields.io/badge/Lines_in_tests-142-orange.svg"
             alt="Lines in tests"></a></p>
@@ -110,10 +110,11 @@
             In my last project, I had some JSON data. The macro from the standard library printed a humanly unreadable long string. This is not pretty! Even
             multiline strings are printed in one single line making it unreadable.</p>
             <p>Run this code in the <a href=
-            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=a8f5eb34d97ec5818550f59af9a3c545">rust playground</a>:</p>
+            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=fn%20main%28%29%20%7B%0A%20%20%20%20let%20json_str%20%3D%20r%23%22%0A%7B%0A%20%20%20%20owner%3A%20%27bestia-dev%27%2C%0A%20%20%20%20repository_details%3A%20%7B%0A%20%20%20%20%20%20%20%20general%3A%20%7B%0A%20%20%20%20%20%20%20%20description%3A%20%27testing%20the%20creation%20of%20a%20github%20repo%27%2C%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%7D%2C%0A%7D%0A%22%23%3B%0A%20%20%20%20dbg%21%28json_str%29%3B%0A%7D">
+            Rust playground</a>:</p>
             <div class="example-wrap">
-              <pre class="rust rust-example-rendered"><code><span class="kw">fn </span>main() {
-    <span class="kw">let </span>json_str = <span class="string">r#"
+              <pre class="language-Rust"><code>fn main() {
+    let json_str = r#"
 {
     owner: 'bestia-dev',
     repository_details: {
@@ -122,10 +123,10 @@
         },
     },
 }
-"#</span>;
-    <span class="macro">dbg!</span>(json_str);
-}</code></pre><a class="test-arrow" target="_blank" href=
-"https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0A++++let+json_str+=+r%23%22%0A%7B%0A++++owner:+'bestia-dev',%0A++++repository_details:+%7B%0A++++++++general:+%7B%0A++++++++description:+'testing+the+creation+of+a+github+repo',%0A++++++++%7D,%0A++++%7D,%0A%7D%0A%22%23;%0A++++dbg!(json_str);%0A%7D&amp;edition=2021">Run</a>
+"#;
+    dbg!(json_str);
+}
+</code></pre>
             </div>
             <p>This is the unreadable output for a string:</p>
             <div class="example-wrap">
@@ -135,23 +136,24 @@
             </div>
             <p>Now let’s try with the serde_json::Value:</p>
             <p>Run this code in the <a href=
-            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=c88ade301a7aa16bf27e7b8b9b6790ac">rust playground</a>:</p>
+            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=use%20serde_json%3B%0Ause%20anyhow%3A%3AResult%3B%0A%0Afn%20main%28%29%20-%3E%20Result%3C%28%29%2C%20anyhow%3A%3AError%3E%7B%0A%20%20%20%20%20%20%20let%20response_text%20%3D%0Ar%23%22%7B%0A%20%20%20%20%22id%22%3A%201296269%2C%0A%20%20%20%20%22homepage%22%3A%20%22https%3A%2F%2Fgithub.com%22%0A%7D%22%23%3B%0A%20%20%20%20let%20parsed_json_value%3A%20serde_json%3A%3AValue%20%3D%20serde_json%3A%3Afrom_str%28response_text%29%3F%3B%0A%20%20%20%20dbg%21%28%26parsed_json_value%29%3B%0A%20%20%20%20%0A%20%20%20%20Ok%28%28%29%29%0A%7D">
+            Rust playground</a>:</p>
             <div class="example-wrap">
-              <pre class="rust rust-example-rendered"><code><span class="kw">use </span>serde_json;
-<span class="kw">use </span>anyhow::Result;
+              <pre class="language-Rust"><code>use serde_json;
+use anyhow::Result;
 
-<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), anyhow::Error&gt;{
-       <span class="kw">let </span>response_text =
-<span class="string">r#"{
+fn main() -&gt; Result&lt;(), anyhow::Error&gt;{
+       let response_text =
+r#"{
     "id": 1296269,
     "homepage": "https://github.com"
-}"#</span>;
-    <span class="kw">let </span>parsed_json_value: serde_json::Value = serde_json::from_str(response_text)<span class="question-mark">?</span>;
-    <span class="macro">dbg!</span>(<span class="kw-2">&</span>parsed_json_value);
+}"#;
+    let parsed_json_value: serde_json::Value = serde_json::from_str(response_text)?;
+    dbg!(&amp;parsed_json_value);
     
-    <span class="prelude-val">Ok</span>(())
-}</code></pre><a class="test-arrow" target="_blank" href=
-"https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Ause+serde_json;%0Ause+anyhow::Result;%0A%0Afn+main()+-%3E+Result%3C(),+anyhow::Error%3E%7B%0A+++++++let+response_text+=%0Ar%23%22%7B%0A++++%22id%22:+1296269,%0A++++%22homepage%22:+%22https://github.com%22%0A%7D%22%23;%0A++++let+parsed_json_value:+serde_json::Value+=+serde_json::from_str(response_text)?;%0A++++dbg!(%26parsed_json_value);%0A++++%0A++++Ok(())%0A%7D&amp;edition=2021">Run</a>
+    Ok(())
+}
+</code></pre>
             </div>
             <p>This returns also an unreadable output:</p>
             <div class="example-wrap">
@@ -169,32 +171,31 @@
             <h3 id="new-pretty_dbg-macro"><a href="#new-pretty_dbg-macro">new pretty_dbg! macro</a></h3>
             <p>So I decided to copy the original macro <code>dbg!</code>, modify it a little bit, and give it the name <code>pretty_dbg!</code>.</p>
             <p>Run this code in the <a href=
-            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=e9ef982465f717d9c5b642aead94a4ff">rust playground</a>:</p>
+            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=%2F%2F%2F%20copy%20of%20the%20macro%20dbg%21%2C%20just%20modified%20%3A%23%3F%20to%20%3A%23%20for%20pretty%20print%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20pretty_dbg%20%7B%0A%20%20%20%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24val%3Aexpr%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20match%20%24val%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%7B%7D%20%3D%20%7B%3A%23%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%2C%20std%3A%3Astringify%21%28%24val%29%2C%20%26tmp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tmp%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24%28%24val%3Aexpr%29%2C%2B%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%28%24%28std%3A%3Apretty_dbg%21%28%24val%29%29%2C%2B%2C%29%0A%20%20%20%20%7D%3B%0A%7D%0A%0Afn%20main%28%29%20%7B%0A%20%20%20%20let%20json_str%20%3D%20r%23%22%0A%20%20%20%7B%0A%20%20%20%20owner%3A%20%27bestia-dev%27%2C%0A%20%20%20%20repository_details%3A%20%7B%0A%20%20%20%20%20%20general%3A%20%7B%0A%20%20%20%20%20%20%20%20description%3A%20%27testing%20the%20creation%20of%20a%20github%20repo%27%2C%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%7D%2C%0A%20%20%7D%0A%22%23%3B%0A%20%20%20%20pretty_dbg%21%28json_str%29%3B%0A%7D">
+            Rust playground</a>:</p>
             <div class="example-wrap">
-              <pre class="rust rust-example-rendered"><code><span class="doccomment">/// copy of the macro dbg!, just modified :#? to :# for pretty print
-</span><span class="attr">#[macro_export]
-</span><span class="macro">macro_rules! </span>pretty_dbg {
+              <pre class="language-Rust"><code>/// copy of the macro dbg!, just modified :#? to :# for pretty print
+#[macro_export]
+macro_rules! pretty_dbg {
     () =&gt; {
-        <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}]"</span>, <span class="macro">std::file!</span>(), <span class=
-"macro">std::line!</span>(), <span class="macro">std::column!</span>())
+        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
     };
-    (<span class="macro-nonterminal">$val</span>:expr $(,)<span class="question-mark">?</span>) =&gt; {
-        <span class="kw">match </span><span class="macro-nonterminal">$val </span>{
+    ($val:expr $(,)?) =&gt; {
+        match $val {
             tmp =&gt; {
-                <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}] {} = {:#}"</span>,
-                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::column!</span>() <span class=
-"macro">std::stringify!</span>(<span class="macro-nonterminal">$val</span>), <span class="kw-2">&</span>tmp);
+                std::eprintln!("[{}:{}:{}] {} = {:#}",
+                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &amp;tmp);
                 tmp
             }
         }
     };
-    ($(<span class="macro-nonterminal">$val</span>:expr),+ $(,)<span class="question-mark">?</span>) =&gt; {
-        ($(<span class="macro">std::pretty_dbg!</span>(<span class="macro-nonterminal">$val</span>)),+,)
+    ($($val:expr),+ $(,)?) =&gt; {
+        ($(std::pretty_dbg!($val)),+,)
     };
 }
 
-<span class="kw">fn </span>main() {
-    <span class="kw">let </span>json_str = <span class="string">r#"
+fn main() {
+    let json_str = r#"
    {
     owner: 'bestia-dev',
     repository_details: {
@@ -203,10 +204,10 @@
       },
     },
   }
-"#</span>;
-    <span class="macro">pretty_dbg!</span>(json_str);
-}</code></pre><a class="test-arrow" target="_blank" href=
-"https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0A%23%5Ballow(unused_extern_crates)%5D%0Aextern+crate+r%23pretty_dbg;%0A///+copy+of+the+macro+dbg!,+just+modified+:%23?+to+:%23+for+pretty+print%0A%23%5Bmacro_export%5D%0Amacro_rules!+pretty_dbg+%7B%0A++++()+=%3E+%7B%0A++++++++std::eprintln!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D%22,+std::file!(),+std::line!(),+std::column!())%0A++++%7D;%0A++++(%24val:expr+%24(,)?)+=%3E+%7B%0A++++++++match+%24val+%7B%0A++++++++++++tmp+=%3E+%7B%0A++++++++++++++++std::eprintln!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D+%7B%7D+=+%7B:%23%7D%22,%0A++++++++++++++++++++std::file!(),+std::line!(),+std::column!()+std::stringify!(%24val),+%26tmp);%0A++++++++++++++++tmp%0A++++++++++++%7D%0A++++++++%7D%0A++++%7D;%0A++++(%24(%24val:expr),%2B+%24(,)?)+=%3E+%7B%0A++++++++(%24(std::pretty_dbg!(%24val)),%2B,)%0A++++%7D;%0A%7D%0A%0Afn+main()+%7B%0A++++let+json_str+=+r%23%22%0A+++%7B%0A++++owner:+'bestia-dev',%0A++++repository_details:+%7B%0A++++++general:+%7B%0A++++++++description:+'testing+the+creation+of+a+github+repo',%0A++++++%7D,%0A++++%7D,%0A++%7D%0A%22%23;%0A++++pretty_dbg!(json_str);%0A%7D&amp;edition=2021">Run</a>
+"#;
+    pretty_dbg!(json_str);
+}
+</code></pre>
             </div>
             <p>The output is now very pretty:</p>
             <div class="example-wrap">
@@ -223,45 +224,44 @@
             </div>
             <p>Now let’s try with the serde_json::Value:</p>
             <p>Run this code in the <a href=
-            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=d5d5e264b9143f4fde16594eaea1fa09">rust playground</a>:</p>
+            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=use%20serde_json%3B%0Ause%20anyhow%3A%3AResult%3B%0A%0A%2F%2F%2F%20copy%20of%20the%20macro%20dbg%21%2C%20just%20modified%20%3A%23%3F%20to%20%3A%23%20for%20pretty%20print%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20pretty_dbg%20%7B%0A%20%20%20%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24val%3Aexpr%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20match%20%24val%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%7B%7D%20%3D%20%7B%3A%23%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%2C%20std%3A%3Astringify%21%28%24val%29%2C%20%26tmp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tmp%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24%28%24val%3Aexpr%29%2C%2B%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%28%24%28std%3A%3Apretty_dbg%21%28%24val%29%29%2C%2B%2C%29%0A%20%20%20%20%7D%3B%0A%7D%0A%0Afn%20main%28%29%20-%3E%20Result%3C%28%29%2C%20anyhow%3A%3AError%3E%7B%0A%20%20%20%20%20%20%20let%20response_text%20%3D%0Ar%23%22%7B%0A%20%20%20%20%22id%22%3A%201296269%2C%0A%20%20%20%20%22homepage%22%3A%20%22https%3A%2F%2Fgithub.com%22%0A%7D%22%23%3B%0A%20%20%20%20let%20parsed_json_value%3A%20serde_json%3A%3AValue%20%3D%20serde_json%3A%3Afrom_str%28response_text%29%3F%3B%0A%20%20%20%20pretty_dbg%21%28%26parsed_json_value%29%3B%0A%20%20%20%20%0A%20%20%20%20Ok%28%28%29%29%0A%7D">
+            Rust playground</a>:</p>
             <div class="example-wrap">
-              <pre class="rust rust-example-rendered"><code><span class="kw">use </span>serde_json;
-<span class="kw">use </span>anyhow::Result;
+              <pre class="language-Rust"><code>use serde_json;
+use anyhow::Result;
 
-<span class="doccomment">/// copy of the macro dbg!, just modified :#? to :# for pretty print
-</span><span class="attr">#[macro_export]
-</span><span class="macro">macro_rules! </span>pretty_dbg {
+/// copy of the macro dbg!, just modified :#? to :# for pretty print
+#[macro_export]
+macro_rules! pretty_dbg {
     () =&gt; {
-        <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}]"</span>, <span class="macro">std::file!</span>(), <span class=
-"macro">std::line!</span>(), <span class="macro">std::column!</span>())
+        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
     };
-    (<span class="macro-nonterminal">$val</span>:expr $(,)<span class="question-mark">?</span>) =&gt; {
-        <span class="kw">match </span><span class="macro-nonterminal">$val </span>{
+    ($val:expr $(,)?) =&gt; {
+        match $val {
             tmp =&gt; {
-                <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}] {} = {:#}"</span>,
-                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::column!</span>(), <span class=
-"macro">std::stringify!</span>(<span class="macro-nonterminal">$val</span>), <span class="kw-2">&</span>tmp);
+                std::eprintln!("[{}:{}:{}] {} = {:#}",
+                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &amp;tmp);
                 tmp
             }
         }
     };
-    ($(<span class="macro-nonterminal">$val</span>:expr),+ $(,)<span class="question-mark">?</span>) =&gt; {
-        ($(<span class="macro">std::pretty_dbg!</span>(<span class="macro-nonterminal">$val</span>)),+,)
+    ($($val:expr),+ $(,)?) =&gt; {
+        ($(std::pretty_dbg!($val)),+,)
     };
 }
 
-<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), anyhow::Error&gt;{
-       <span class="kw">let </span>response_text =
-<span class="string">r#"{
+fn main() -&gt; Result&lt;(), anyhow::Error&gt;{
+       let response_text =
+r#"{
     "id": 1296269,
     "homepage": "https://github.com"
-}"#</span>;
-    <span class="kw">let </span>parsed_json_value: serde_json::Value = serde_json::from_str(response_text)<span class="question-mark">?</span>;
-    <span class="macro">pretty_dbg!</span>(<span class="kw-2">&</span>parsed_json_value);
+}"#;
+    let parsed_json_value: serde_json::Value = serde_json::from_str(response_text)?;
+    pretty_dbg!(&amp;parsed_json_value);
     
-    <span class="prelude-val">Ok</span>(())
-}</code></pre><a class="test-arrow" target="_blank" href=
-"https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0A%23%5Ballow(unused_extern_crates)%5D%0Aextern+crate+r%23pretty_dbg;%0Ause+serde_json;%0Ause+anyhow::Result;%0A%0A///+copy+of+the+macro+dbg!,+just+modified+:%23?+to+:%23+for+pretty+print%0A%23%5Bmacro_export%5D%0Amacro_rules!+pretty_dbg+%7B%0A++++()+=%3E+%7B%0A++++++++std::eprintln!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D%22,+std::file!(),+std::line!(),+std::column!())%0A++++%7D;%0A++++(%24val:expr+%24(,)?)+=%3E+%7B%0A++++++++match+%24val+%7B%0A++++++++++++tmp+=%3E+%7B%0A++++++++++++++++std::eprintln!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D+%7B%7D+=+%7B:%23%7D%22,%0A++++++++++++++++++++std::file!(),+std::line!(),+std::column!(),+std::stringify!(%24val),+%26tmp);%0A++++++++++++++++tmp%0A++++++++++++%7D%0A++++++++%7D%0A++++%7D;%0A++++(%24(%24val:expr),%2B+%24(,)?)+=%3E+%7B%0A++++++++(%24(std::pretty_dbg!(%24val)),%2B,)%0A++++%7D;%0A%7D%0A%0Afn+main()+-%3E+Result%3C(),+anyhow::Error%3E%7B%0A+++++++let+response_text+=%0Ar%23%22%7B%0A++++%22id%22:+1296269,%0A++++%22homepage%22:+%22https://github.com%22%0A%7D%22%23;%0A++++let+parsed_json_value:+serde_json::Value+=+serde_json::from_str(response_text)?;%0A++++pretty_dbg!(%26parsed_json_value);%0A++++%0A++++Ok(())%0A%7D&amp;edition=2021">Run</a>
+    Ok(())
+}
+</code></pre>
             </div>
             <p>The output is now pretty:</p>
             <div class="example-wrap">
@@ -277,48 +277,46 @@
             <p>Again I could use simply the <code>eprintln!</code>, but then it is not easy to find and remove this debugging code.<br>
             Let’s make another macro <code>format_dbg!</code>. It is just a simpler <code>dbg!</code> with another name.</p>
             <p>Run this code in the <a href=
-            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=89ac8ec47ac972d4812e28846c803628">rust playground</a>:</p>
+            "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=fn%20main%28%29%20%7B%0A%2F%2F%2F%20copy%20of%20the%20macro%20dbg%21%2C%20just%20modified%20%3A%23%3F%20to%20%3A%23%20for%20pretty%20print%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20pretty_dbg%20%7B%0A%20%20%20%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24val%3Aexpr%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20match%20%24val%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%7B%7D%20%3D%20%7B%3A%23%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%2C%20std%3A%3Astringify%21%28%24val%29%2C%20%26tmp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tmp%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%20%20%28%24%28%24val%3Aexpr%29%2C%2B%20%24%28%2C%29%3F%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%28%24%28std%3A%3Apretty_dbg%21%28%24val%29%29%2C%2B%2C%29%0A%20%20%20%20%7D%3B%0A%7D%0A%0A%2F%2F%2F%20format_dbg%21%20is%20a%20version%20of%20dbg%21%20that%20uses%20the%20formatting%20rules%20from%20the%20macro%20eprintln%21%0A%2F%2F%2F%20Just%20like%20dbg%21%2C%20it%20prefixes%20the%20stderr%20output%20with%20file%21%2C%20line%21%20and%20column%21%0A%23%5Bmacro_export%5D%0Amacro_rules%21%20format_dbg%20%7B%0A%20%20%20%20%28%24%28%24arg%3Att%29%2A%29%20%3D%3E%20%7B%7B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprint%21%28%22%5B%7B%7D%3A%7B%7D%3A%7B%7D%5D%20%22%2C%20std%3A%3Afile%21%28%29%2C%20std%3A%3Aline%21%28%29%2C%20std%3A%3Acolumn%21%28%29%29%3B%0A%20%20%20%20%20%20%20%20std%3A%3Aeprintln%21%28%24%28%24arg%29%2A%29%3B%0A%20%20%20%20%7D%7D%3B%0A%7D%0A%20%20%20%20let%20val%3D%22123456789%22%3B%0A%0A%20%20%20%20dbg%21%28%22using%20the%20dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20pretty_dbg%21%28%22using%20the%20pretty_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%20%20%20%20format_dbg%21%28%22using%20the%20format_dbg%21%20macro%20%3A%20%7Bval%7D%22%29%3B%0A%7D">
+            Rust playground</a>:</p>
             <div class="example-wrap">
-              <pre class="rust rust-example-rendered"><code><span class="kw">fn </span>main() {
-<span class="doccomment">/// copy of the macro dbg!, just modified :#? to :# for pretty print
-</span><span class="attr">#[macro_export]
-</span><span class="macro">macro_rules! </span>pretty_dbg {
+              <pre class="language-Rust"><code>fn main() {
+/// copy of the macro dbg!, just modified :#? to :# for pretty print
+#[macro_export]
+macro_rules! pretty_dbg {
     () =&gt; {
-        <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}]"</span>, <span class="macro">std::file!</span>(), <span class=
-"macro">std::line!</span>(), <span class="macro">std::column!</span>())
+        std::eprintln!("[{}:{}:{}]", std::file!(), std::line!(), std::column!())
     };
-    (<span class="macro-nonterminal">$val</span>:expr $(,)<span class="question-mark">?</span>) =&gt; {
-        <span class="kw">match </span><span class="macro-nonterminal">$val </span>{
+    ($val:expr $(,)?) =&gt; {
+        match $val {
             tmp =&gt; {
-                <span class="macro">std::eprintln!</span>(<span class="string">"[{}:{}:{}] {} = {:#}"</span>,
-                    <span class="macro">std::file!</span>(), <span class="macro">std::line!</span>(), <span class="macro">std::column!</span>(), <span class=
-"macro">std::stringify!</span>(<span class="macro-nonterminal">$val</span>), <span class="kw-2">&</span>tmp);
+                std::eprintln!("[{}:{}:{}] {} = {:#}",
+                    std::file!(), std::line!(), std::column!(), std::stringify!($val), &amp;tmp);
                 tmp
             }
         }
     };
-    ($(<span class="macro-nonterminal">$val</span>:expr),+ $(,)<span class="question-mark">?</span>) =&gt; {
-        ($(<span class="macro">std::pretty_dbg!</span>(<span class="macro-nonterminal">$val</span>)),+,)
+    ($($val:expr),+ $(,)?) =&gt; {
+        ($(std::pretty_dbg!($val)),+,)
     };
 }
 
-<span class="doccomment">/// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
+/// format_dbg! is a version of dbg! that uses the formatting rules from the macro eprintln!
 /// Just like dbg!, it prefixes the stderr output with file!, line! and column!
-</span><span class="attr">#[macro_export]
-</span><span class="macro">macro_rules! </span>format_dbg {
-    ($(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {{
-        <span class="macro">std::eprint!</span>(<span class="string">"[{}:{}:{}] "</span>, <span class="macro">std::file!</span>(), <span class=
-"macro">std::line!</span>(), <span class="macro">std::column!</span>());
-        <span class="macro">std::eprintln!</span>($(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>);
+#[macro_export]
+macro_rules! format_dbg {
+    ($($arg:tt)*) =&gt; {{
+        std::eprint!("[{}:{}:{}] ", std::file!(), std::line!(), std::column!());
+        std::eprintln!($($arg)*);
     }};
 }
-    <span class="kw">let </span>val=<span class="string">"123456789"</span>;
+    let val="123456789";
 
-    <span class="macro">dbg!</span>(<span class="string">"using the dbg! macro : {val}"</span>);
-    <span class="macro">pretty_dbg!</span>(<span class="string">"using the pretty_dbg! macro : {val}"</span>);
-    <span class="macro">format_dbg!</span>(<span class="string">"using the format_dbg! macro : {val}"</span>);
-}</code></pre><a class="test-arrow" target="_blank" href=
-"https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0A%23%5Ballow(unused_extern_crates)%5D%0Aextern+crate+r%23pretty_dbg;%0Afn+main()+%7B%0A///+copy+of+the+macro+dbg!,+just+modified+:%23?+to+:%23+for+pretty+print%0A%23%5Bmacro_export%5D%0Amacro_rules!+pretty_dbg+%7B%0A++++()+=%3E+%7B%0A++++++++std::eprintln!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D%22,+std::file!(),+std::line!(),+std::column!())%0A++++%7D;%0A++++(%24val:expr+%24(,)?)+=%3E+%7B%0A++++++++match+%24val+%7B%0A++++++++++++tmp+=%3E+%7B%0A++++++++++++++++std::eprintln!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D+%7B%7D+=+%7B:%23%7D%22,%0A++++++++++++++++++++std::file!(),+std::line!(),+std::column!(),+std::stringify!(%24val),+%26tmp);%0A++++++++++++++++tmp%0A++++++++++++%7D%0A++++++++%7D%0A++++%7D;%0A++++(%24(%24val:expr),%2B+%24(,)?)+=%3E+%7B%0A++++++++(%24(std::pretty_dbg!(%24val)),%2B,)%0A++++%7D;%0A%7D%0A%0A///+format_dbg!+is+a+version+of+dbg!+that+uses+the+formatting+rules+from+the+macro+eprintln!%0A///+Just+like+dbg!,+it+prefixes+the+stderr+output+with+file!,+line!+and+column!%0A%23%5Bmacro_export%5D%0Amacro_rules!+format_dbg+%7B%0A++++(%24(%24arg:tt)*)+=%3E+%7B%7B%0A++++++++std::eprint!(%22%5B%7B%7D:%7B%7D:%7B%7D%5D+%22,+std::file!(),+std::line!(),+std::column!());%0A++++++++std::eprintln!(%24(%24arg)*);%0A++++%7D%7D;%0A%7D%0A++++let+val=%22123456789%22;%0A%0A++++dbg!(%22using+the+dbg!+macro+:+%7Bval%7D%22);%0A++++pretty_dbg!(%22using+the+pretty_dbg!+macro+:+%7Bval%7D%22);%0A++++format_dbg!(%22using+the+format_dbg!+macro+:+%7Bval%7D%22);%0A%7D&amp;edition=2021">Run</a>
+    dbg!("using the dbg! macro : {val}");
+    pretty_dbg!("using the pretty_dbg! macro : {val}");
+    format_dbg!("using the format_dbg! macro : {val}");
+}
+</code></pre>
             </div>
             <h3 id="new-crate-in-cratesio-or-not"><a href="#new-crate-in-cratesio-or-not">New crate in crates.io or not</a></h3>
             <p>I think this is maybe too small to be made in a new crate.<br>
@@ -330,7 +328,7 @@
             <p>Trying short Rust code in the Rust playground is great! It is fast and easy. It works just with a browser. Fantastic to show examples of real
             code, not just hypothetical code.<br>
             I first created Github Gists for my code examples. Every example must be in a separate Gist. Then I copy the Gist identification number into the
-            playground link like this: <a href=
+            Rust playground link like this: <a href=
             "https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=d5d5e264b9143f4fde16594eaea1fa09">https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;gist=d5d5e264b9143f4fde16594eaea1fa09</a>
             and it just works. Great!</p>
             <p>I want to avoid using <code>unwrap()</code> in my examples. Unwrap is a bad, bad habit. Instead, I will use the crate <code>anyhow</code> and
