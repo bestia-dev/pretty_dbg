@@ -12,6 +12,7 @@ The TODO section is part of the [README.md](https://github.com/bestia-dev/pretty
 
 - auto_playground
 - x
+- x
 
 ## Version 1.0.54 (2024-02-22)
 
