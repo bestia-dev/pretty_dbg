@@ -1,7 +1,7 @@
 // pretty_dbg/src/lib.rs
 
 // logo for docs.rs in png
-// #![doc(html_logo_url = "https://github.com/bestia-dev/cargo-auto/raw/main/images/logo/logo_cargo_auto.svg")]
+// #![doc(html_logo_url = "https://github.com/automation-tasks-rs/cargo-auto/raw/main/images/logo/logo_cargo_auto.svg")]
 // even favicon ico can be changed
 // #![doc(html_favicon_url = "/logo.ico")]
 // playground for examples. Warning: It didn't work well for me. And it works only in docs. Not in Github and not in crates.io.
