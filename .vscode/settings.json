@@ -25,7 +25,6 @@
         "buildtool",
         "cdylib",
         "cmake",
-        "CRDE",
         "crev",
         "dbg",
         "debuginfo",
