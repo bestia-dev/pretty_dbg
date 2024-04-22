@@ -15,7 +15,7 @@
  [![crates.io](https://img.shields.io/crates/v/pretty_dbg.svg)](https://crates.io/crates/pretty_dbg)
  [![Documentation](https://docs.rs/pretty_dbg/badge.svg)](https://docs.rs/pretty_dbg/)
  [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/pretty_dbg.svg)](https://web.crev.dev/rust-reviews/crate/pretty_dbg/)
- [![RustActions](https://github.com/bestia-dev/pretty_dbg/actions/workflows/rust_fmt_auto_build_test.yml/badge.svg)](https://github.com/bestia-dev/pretty_dbg/)
+ [![rust_fmt_auto_build_tests](https://github.com/bestia-dev/pretty_dbg/actions/workflows/rust_fmt_auto_build_test.yml/badge.svg)](https://github.com/bestia-dev/pretty_dbg/)
 
  [![latest doc](https://img.shields.io/badge/latest_docs-GitHub-orange.svg)](https://bestia-dev.github.io/pretty_dbg/pretty_dbg/index.html)
  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/pretty_dbg/blob/main/LICENSE)
