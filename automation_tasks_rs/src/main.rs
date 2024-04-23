@@ -77,7 +77,7 @@ fn print_help() {
     {YELLOW}On the very first commit, this task will initialize a new local git repository and create a remote GitHub repo.{RESET}
     {YELLOW}In that case the task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
 {GREEN}cargo auto publish_to_crates_io{RESET} - {YELLOW}publish to crates.io, git tag{RESET}
-    {YELLOW}You need the API token for publishing. Get the token on <https://crates.io/settings/tokens>. Then use the command{RESET}
+    {YELLOW}You need the API secret_token for publishing. Get the token on <https://crates.io/settings/tokens>. Then use the command{RESET}
     {YELLOW}`cargo login` and paste the token when prompted. This will save it to a local credentials file.{RESET}
 {GREEN}cargo auto github_new_release{RESET} - {YELLOW}creates new release on github{RESET}
     {YELLOW}This task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
