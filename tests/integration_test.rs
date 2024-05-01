@@ -40,7 +40,7 @@ fn test_00_check_if_macro_assert_stderr_eq_works() {
 fn test_01_macro_dbg_1() {
     fn macro_dbg_1() {
         let json_str = r#"{
-    owner: 'bestia-dev',
+    github_owner: 'bestia-dev',
     repository_details: {
         general: {
         description: 'testing the creation of a github repo',
@@ -50,7 +50,7 @@ fn test_01_macro_dbg_1() {
         dbg!(json_str);
     }
     assert_stderr_eq!(macro_dbg_1(),
-"[tests/integration_test.rs:50:9] json_str = \"{\\n    owner: 'bestia-dev',\\n    repository_details: {\\n        general: {\\n        description: 'testing the creation of a github repo',\\n        },\\n    },\\n}\"\n");
+"[tests/integration_test.rs:50:9] json_str = \"{\\n    github_owner: 'bestia-dev',\\n    repository_details: {\\n        general: {\\n        description: 'testing the creation of a github repo',\\n        },\\n    },\\n}\"\n");
 }
 
 /// not pretty dbg! for serde_json::Value
@@ -75,7 +75,7 @@ fn test_02_macro_dbg_2() {
 fn test_03_macro_pretty_dbg_1() {
     fn macro_pretty_dbg_1() {
         let json_str = r#"{
-    owner: 'bestia-dev',
+    github_owner: 'bestia-dev',
     repository_details: {
     general: {
         description: 'testing the creation of a github repo',
@@ -87,7 +87,7 @@ fn test_03_macro_pretty_dbg_1() {
     assert_stderr_eq!(
         macro_pretty_dbg_1(),
         r#"[tests/integration_test.rs:85:9] json_str = {
-    owner: 'bestia-dev',
+    github_owner: 'bestia-dev',
     repository_details: {
     general: {
         description: 'testing the creation of a github repo',

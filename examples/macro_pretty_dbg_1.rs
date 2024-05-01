@@ -6,7 +6,7 @@ use pretty_dbg::pretty_dbg;
 fn main() {
     let json_str = r#"
    {
-    owner: 'bestia-dev',
+    github_owner: 'bestia-dev',
     repository_details: {
       general: {
         description: 'testing the creation of a github repo',

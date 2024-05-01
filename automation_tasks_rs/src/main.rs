@@ -276,7 +276,7 @@ fn task_github_new_release() {
     // take care of tags
     let tag_name_version = cl::git_tag_sync_check_create_push(&version);
 
-    let owner = cargo_toml.github_owner().unwrap();
+    let github_owner = cargo_toml.github_owner().unwrap();
     let repo_name = cargo_toml.package_name();
     let now_date = cl::now_utc_date_iso();
     let release_name = format!("Version {} ({})", &version, now_date);
@@ -288,7 +288,7 @@ fn task_github_new_release() {
     let body_md_text = cl::body_text_from_releases_md(&release_name).unwrap();
 
     let _release_id = cl::github_api_create_new_release(
-        &owner,
+        &github_owner,
         &repo_name,
         &tag_name_version,
         &release_name,
@@ -312,7 +312,7 @@ fn task_github_new_release() {
         cl::run_shell_command(&format!("tar -zcvf {tar_name} target/release/{repo_name}"));
 
         // upload asset
-        cl::github_api_upload_asset_to_release(&owner, &repo_name, &release_id, &tar_name).await;
+        cl::github_api_upload_asset_to_release(&github_owner, &repo_name, &release_id, &tar_name).await;
         cl::run_shell_command(&format!("rm {tar_name}"));
 
         println!("
@@ -323,7 +323,7 @@ fn task_github_new_release() {
         */
     println!(
         "
-{GREEN}https://github.com/{owner}/{repo_name}/releases{RESET}
+{GREEN}https://github.com/{github_owner}/{repo_name}/releases{RESET}
     "
     );
 }
