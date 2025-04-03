@@ -6,7 +6,10 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **pretty_dbg! is a copy of dbg!, just modified :#? to :# for pretty print. format_dbg! works like eprintln! with added file, line and column**  
-***version: 1.0.55 date: 2024-02-23 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/pretty_dbg)***  
+***version: 1.0.56 date: 2025-04-03 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/pretty_dbg)***
+
+ ![dbg](https://img.shields.io/badge/dbg-orange)
+ ![macro](https://img.shields.io/badge/macro-orange)
 
 [//]: # (auto_cargo_toml_to_md end)
 

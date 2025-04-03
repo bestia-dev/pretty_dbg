@@ -1,20 +1,34 @@
 // automation_tasks_rs for pretty_dbg
 
-// region: library with basic automation tasks
-use cargo_auto_lib as cl;
+// region: library and modules with basic automation tasks
+
+mod build_cli_bin_mod;
+mod build_lib_mod;
+mod cargo_auto_github_api_mod;
+mod encrypt_decrypt_with_ssh_key_mod;
+mod generic_functions_mod;
+mod tasks_mod;
+
+pub use cargo_auto_lib as cl;
+
+use crate::cargo_auto_github_api_mod as cgl;
+use crate::encrypt_decrypt_with_ssh_key_mod as ende;
+use crate::generic_functions_mod as gn;
+use crate::tasks_mod as ts;
+
+pub use cl::{BLUE, GREEN, RED, RESET, YELLOW};
+
 // traits must be in scope (Rust strangeness)
 use cl::CargoTomlPublicApiMethods;
-
-use cargo_auto_lib::GREEN;
-use cargo_auto_lib::RED;
-use cargo_auto_lib::RESET;
-use cargo_auto_lib::YELLOW;
 
 // region: library with basic automation tasks
 
 fn main() {
+    std::panic::set_hook(Box::new(gn::panic_set_hook));
+    gn::tracing_init();
     cl::exit_if_not_run_in_rust_project_root_directory();
-
+    ende::github_api_token_with_oauth2_mod::github_api_config_initialize();
+    ende::crates_io_api_token_mod::crates_io_config_initialize();
     // get CLI arguments
     let mut args = std::env::args();
     // the zero argument is the name of the program
@@ -34,7 +48,7 @@ fn match_arguments_and_call_tasks(mut args: std::env::Args) {
             if &task == "completion" {
                 completion();
             } else {
-                println!("{YELLOW}Running automation task: {task}{RESET}");
+                println!("  {YELLOW}Running automation task: {task}{RESET}");
                 if &task == "build" {
                     task_build();
                 } else if &task == "release" {
@@ -63,26 +77,36 @@ fn match_arguments_and_call_tasks(mut args: std::env::Args) {
 fn print_help() {
     println!(
         r#"
-    {YELLOW}Welcome to cargo-auto !{RESET}
-    {YELLOW}This program automates your custom tasks when developing a Rust project.{RESET}
+  {YELLOW}Welcome to cargo-auto !{RESET}
+  {YELLOW}This program automates your custom tasks when developing a Rust project.{RESET}
 
-    {YELLOW}User defined tasks in automation_tasks_rs:{RESET}
+  {YELLOW}User defined tasks in automation_tasks_rs:{RESET}
 {GREEN}cargo auto build{RESET} - {YELLOW}builds the crate in debug mode, fmt, increment version{RESET}
 {GREEN}cargo auto release{RESET} - {YELLOW}builds the crate in release mode, fmt, increment version{RESET}
 {GREEN}cargo auto doc{RESET} - {YELLOW}builds the docs, copy to docs directory{RESET}
 {GREEN}cargo auto test{RESET} - {YELLOW}runs all the tests{RESET}
 {GREEN}cargo auto commit_and_push "message"{RESET} - {YELLOW}commits with message and push with mandatory message{RESET}
-    {YELLOW}It is preferred to use SSH for git push to GitHub.{RESET}
-    {YELLOW}<https://github.com/CRUSTDE-ContainerizedRustDevEnv/crustde_cnt_img_pod/blob/main/ssh_easy.md>{YELLOW}
-    {YELLOW}On the very first commit, this task will initialize a new local git repository and create a remote GitHub repo.{RESET}
-    {YELLOW}In that case the task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
+  {YELLOW}It is preferred to use SSH for git push to GitHub.{RESET}
+  {YELLOW}<https://github.com/CRUSTDE-ContainerizedRustDevEnv/crustde_cnt_img_pod/blob/main/ssh_easy.md>{YELLOW}
+  {YELLOW}On the very first commit, this task will initialize a new local git repository and create a remote GitHub repo.{RESET}
+  {YELLOW}For the GitHub API the task needs the Access secret token from OAuth2 device workflow.{RESET}
+  {YELLOW}The secret token will be stored in a file encrypted with your SSH private key.{RESET}
+  {YELLOW}You can type the passphrase of the private key for every usee. This is pretty secure.{RESET}
+  {YELLOW}Somewhat less secure (but more comfortable) way is to store the private key in ssh-agent.{RESET}
 {GREEN}cargo auto publish_to_crates_io{RESET} - {YELLOW}publish to crates.io, git tag{RESET}
-    {YELLOW}You need the API secret_token for publishing. Get the token on <https://crates.io/settings/tokens>. Then use the command{RESET}
-    {YELLOW}`cargo login` and paste the token when prompted. This will save it to a local credentials file.{RESET}
-{GREEN}cargo auto github_new_release{RESET} - {YELLOW}creates new release on github{RESET}
-    {YELLOW}This task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
+  {YELLOW}You need the API secret_token for publishing. Get the secret_token on <https://crates.io/settings/tokens>.{RESET}
+  {YELLOW}The secret token will be stored in a file encrypted with your SSH private key.{RESET}
+  {YELLOW}You can type the passphrase of the private key for every usee. This is pretty secure.{RESET}
+  {YELLOW}Somewhat less secure (but more comfortable) way is to store the private key in ssh-agent.{RESET}
+{GREEN}cargo auto github_new_release{RESET} - {YELLOW}creates new release on GitHub{RESET}
+  {YELLOW}For the GitHub API the task needs the Access secret token from OAuth2 device workflow.{RESET}
+  {YELLOW}The secret token will be stored in a file encrypted with your SSH private key.{RESET}
+  {YELLOW}You can type the passphrase of the private key for every usee. This is pretty secure.{RESET}
+  {YELLOW}Somewhat less secure (but more comfortable) way is to store the private key in ssh-agent.{RESET}
+{GREEN}cargo auto update_automation_tasks_rs{RESET} - {YELLOW}updates the files in automation_tasks_rs{RESET}
+  {YELLOW}Some files are fixed and the update is straight forward, other files need manual diff.{RESET}
 
-    {YELLOW}© 2025 bestia.dev  MIT License github.com/automation-tasks-rs/cargo-auto{RESET}
+  {YELLOW}© 2025 bestia.dev  MIT License github.com/automation-tasks-rs/cargo-auto{RESET}
 "#
     );
     print_examples_cmd();
@@ -102,7 +126,7 @@ r#"{YELLOW}run examples:{RESET}
 
 }
 
-/// sub-command for bash auto-completion of `cargo auto` using the crate `dev_bestia_cargo_completion`
+/// Sub-command for bash auto-completion of `cargo auto` using the crate `dev_bestia_cargo_completion`.
 fn completion() {
     let args: Vec<String> = std::env::args().collect();
     let word_being_completed = args[2].as_str();
@@ -117,6 +141,7 @@ fn completion() {
             "commit_and_push",
             "publish_to_crates_io",
             "github_new_release",
+            "update_automation_tasks_rs",
         ];
         cl::completion_return_one_or_more_sub_commands(sub_commands, word_being_completed);
     }
@@ -135,69 +160,40 @@ fn completion() {
 
 /// cargo build
 fn task_build() {
-    // let cargo_toml = cl::CargoToml::read();
-    cl::auto_version_increment_semver_or_date();
-    cl::run_shell_command("cargo fmt");
-    cl::run_shell_command("cargo build");
+    let cargo_toml = crate::build_cli_bin_mod::task_build();
     println!(
         r#"
-    {YELLOW}After `cargo auto build`, run the examples and/or tests{RESET}
-    {YELLOW}if ok then{RESET}
+  {YELLOW}After `cargo auto build`, run the examples and/or tests{RESET}
+  {YELLOW}if {package_name} ok then{RESET}
 {GREEN}cargo auto release{RESET}
 "#,
-    // package_name = cargo_toml.package_name(),
+        package_name = cargo_toml.package_name(),
     );
     print_examples_cmd();
 }
 
 /// cargo build --release
 fn task_release() {
-    // let cargo_toml = cl::CargoToml::read();
-    cl::auto_version_increment_semver_or_date();
-    cl::auto_cargo_toml_to_md();
-    cl::auto_lines_of_code("");
+    let cargo_toml = crate::build_cli_bin_mod::task_release();
 
-    cl::run_shell_command("cargo fmt");
-    cl::run_shell_command("cargo build --release");
-/*    cl::run_shell_command(&format!(
-        "strip target/release/{package_name}",
-        package_name = cargo_toml.package_name()
-    ));  */
     println!(
         r#"
-    {YELLOW}After `cargo auto release`, run the compiled binary, examples and/or tests{RESET}
-    {YELLOW}if ok then{RESET}
+  {YELLOW}After `cargo auto release`, run the compiled binary, examples and/or tests{RESET}
+  {YELLOW}if {package_name} ok then{RESET}
 {GREEN}cargo auto doc{RESET}
 "#,
-// package_name = cargo_toml.package_name(),
+        package_name = cargo_toml.package_name(),
     );
     print_examples_cmd();
 }
 
-/// cargo doc, then copies to /docs/ folder, because this is a github standard folder
+/// cargo doc, then copies to /docs/ folder, because this is a GitHub standard folder
 fn task_doc() {
-    let cargo_toml = cl::CargoToml::read();
-    cl::auto_cargo_toml_to_md();
-    cl::auto_lines_of_code("");
-    cl::auto_plantuml(&cargo_toml.package_repository().unwrap());
-    cl::auto_playground_run_code();
-    cl::auto_md_to_doc_comments();
-
-    cl::run_shell_command("cargo doc --no-deps --document-private-items");
-    // copy target/doc into docs/ because it is github standard
-    cl::run_shell_command("rsync -a --info=progress2 --delete-after target/doc/ docs/");
-    // Create simple index.html file in docs directory
-    cl::run_shell_command(&format!(
-        r#"printf "<meta http-equiv=\"refresh\" content=\"0; url={}/index.html\" />" > docs/index.html\n"#,
-        cargo_toml.package_name().replace("-", "_")
-    ));
-    // pretty html
-    cl::auto_doc_tidy_html().unwrap();
-    cl::run_shell_command("cargo fmt");
+    ts::task_doc();
     // message to help user with next move
     println!(
         r#"
-    {YELLOW}After `cargo auto doc`, check `docs/index.html`. If ok then test the documentation code examples{RESET}
+  {YELLOW}If ok then run the tests in code and the documentation code examples.{RESET}
 {GREEN}cargo auto test{RESET}
 "#
     );
@@ -207,124 +203,48 @@ fn task_doc() {
 fn task_test() {
     // use --nocapture option to allow integration tests to capture the std output
     // use option --test-threads=1 to run integration tests on one thread to avoid parallelism that would scramble the output
-    cl::run_shell_command("cargo test -- --nocapture --test-threads=1");
+    cl::run_shell_command("cargo test -- --nocapture --test-threads=1").unwrap();
  
     println!(
         r#"
-    {YELLOW}After `cargo auto test`. If ok then {RESET}
+  {YELLOW}After `cargo auto test`. If ok then {RESET}
+  {YELLOW}(commit message is mandatory){RESET}
 {GREEN}cargo auto commit_and_push "message"{RESET}
-    {YELLOW}with mandatory commit message{RESET}
 "#
     );
 }
 
 /// commit and push
 fn task_commit_and_push(arg_2: Option<String>) {
-    let Some(message) = arg_2 else {
-        eprintln!("{RED}Error: Message for commit is mandatory. Exiting.{RESET}");
-        // early exit
-        return;
-    };
-
-    // init repository if needed. If it is not init then normal commit and push.
-    if !cl::init_repository_if_needed(&message) {
-        // separate commit for docs if they changed, to not make a lot of noise in the real commit
-        if std::path::Path::new("docs").exists() {
-            cl::run_shell_command(r#"git add docs && git diff --staged --quiet || git commit -m "update docs" "#);
-        }
-        cl::add_message_to_unreleased(&message);
-        // the real commit of code
-        cl::run_shell_command(&format!( r#"git add -A && git diff --staged --quiet || git commit -m "{message}" "#));
-        cl::run_shell_command("git push");
-        println!(
-r#"
-    {YELLOW}After `cargo auto commit_and_push "message"`{RESET}
+    ts::task_commit_and_push(arg_2);
+    println!(
+        r#"
+  {YELLOW}After `cargo auto commit_and_push "message"`{RESET}
 {GREEN}cargo auto publish_to_crates_io{RESET}
 "#
-        );
-    }
+    );
 }
 
 /// publish to crates.io and git tag
 fn task_publish_to_crates_io() {
-    let cargo_toml = cl::CargoToml::read();
-    let package_name = cargo_toml.package_name();
-    let version = cargo_toml.package_version();
-    // take care of tags
-    let tag_name_version = cl::git_tag_sync_check_create_push(&version);
+    let _tag_name_version = crate::build_cli_bin_mod::task_publish_to_crates_io();
 
-    // cargo publish
-    cl::run_shell_command("cargo publish");
     println!(
         r#"
-    {YELLOW}After `cargo auto publish_to_crates_io`, check in browser{RESET}
-{GREEN}https://crates.io/crates/{package_name}{RESET}
-    {YELLOW}Add the dependency to your Rust project and check how it works.{RESET}
-{GREEN}{package_name} = "{version}"{RESET}
-
-    {YELLOW}First write the content of the release in the RELEASES.md in the `## Unreleased` section, then{RESET}
-    {YELLOW}Then create the GitHub-Release for {tag_name_version}.{RESET}
+  {YELLOW}Now, write the content of the release in the RELEASES.md in the `## Unreleased` section, then{RESET}
+  {YELLOW}Next, create the GitHub Release.{RESET}
 {GREEN}cargo auto github_new_release{RESET}
 "#
     );
 }
 
-/// create a new release on github
+/// create a new release on github and uploads binary executables
 fn task_github_new_release() {
-    let cargo_toml = cl::CargoToml::read();
-    let version = cargo_toml.package_version();
-    // take care of tags
-    let tag_name_version = cl::git_tag_sync_check_create_push(&version);
-
-    let github_owner = cargo_toml.github_owner().unwrap();
-    let repo_name = cargo_toml.package_name();
-    let now_date = cl::now_utc_date_iso();
-    let release_name = format!("Version {} ({})", &version, now_date);
-    let branch = "main";
-
-    // First, the user must write the content into file RELEASES.md in the section ## Unreleased.
-    // Then the automation task will copy the content to GitHub release
-    // and create a new Version title in RELEASES.md.
-    let body_md_text = cl::body_text_from_releases_md(&release_name).unwrap();
-
-    let _release_id = cl::github_api_create_new_release(
-        &github_owner,
-        &repo_name,
-        &tag_name_version,
-        &release_name,
-        branch,
-        &body_md_text,
-    );
-
+    ts::task_github_new_release();
     println!(
-        "
-    {YELLOW}New GitHub release created: {release_name}.{RESET}
-"
-    );
-
-    /*
-        // region: upload asset only for executables, not for libraries
-        println!("
-        {YELLOW}Now uploading release asset. This can take some time if the files are big. Wait...{RESET}
-    ");
-        // compress files tar.gz
-        let tar_name = format!("{repo_name}-{tag_name_version}-x86_64-unknown-linux-gnu.tar.gz");
-        cl::run_shell_command(&format!("tar -zcvf {tar_name} target/release/{repo_name}"));
-
-        // upload asset
-        cl::github_api_upload_asset_to_release(&github_owner, &repo_name, &release_id, &tar_name).await;
-        cl::run_shell_command(&format!("rm {tar_name}"));
-
-        println!("
-        {YELLOW}Asset uploaded. Open and edit the description on GitHub Releases in the browser.{RESET}
-    ");
-        // endregion: upload asset only for executables, not for libraries
-
-        */
-    println!(
-        "
-{GREEN}https://github.com/{github_owner}/{repo_name}/releases{RESET}
-    "
+        r#"  
+  {YELLOW}No more automation tasks. {RESET}
+"#
     );
 }
 // endregion: tasks

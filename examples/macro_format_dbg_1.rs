@@ -1,6 +1,6 @@
 // examples/macro_format_dbg_1.rs
 
-use pretty_dbg::{format_dbg, pretty_dbg};
+use pretty_dbg::format_dbg;
 
 // cargo run --example macro_format_dbg_1
 fn main() {

@@ -1,6 +1,6 @@
 [package]
 name = "pretty_dbg"
-version = "1.0.55"
+version = "1.0.56"
 description = "pretty_dbg! is a copy of dbg!, just modified :#? to :# for pretty print. format_dbg! works like eprintln! with added file, line and column"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"

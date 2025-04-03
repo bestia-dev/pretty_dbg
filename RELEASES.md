@@ -14,6 +14,8 @@ The TODO section is part of the [README.md](https://github.com/bestia-dev/pretty
 - x
 - x
 
+- update automation
+
 ## Version 1.0.54 (2024-02-22)
 
 - add column!, just like the new dbg!
