@@ -1,39 +1,94 @@
 ./docs/help.html
 Document: "2" is not a file!
 
-line 2 column 81 - Warning: trimming empty <span>
-./docs/pretty_dbg/all.html
+line 1 column 2319 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2319 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2335 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 1677 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/settings.html
 Document: "2" is not a file!
 
-line 2 column 81 - Warning: trimming empty <span>
-./docs/pretty_dbg/index.html
-Document: "2" is not a file!
-
-line 3 column 81 - Warning: trimming empty <span>
-./docs/pretty_dbg/macro.format_dbg!.html
-Document: "2" is not a file!
-
-./docs/pretty_dbg/macro.pretty_dbg.html
-Document: "2" is not a file!
-
-line 2 column 81 - Warning: trimming empty <span>
-./docs/pretty_dbg/macro.format_dbg.html
-Document: "2" is not a file!
-
-line 2 column 81 - Warning: trimming empty <span>
-./docs/pretty_dbg/macro.pretty_dbg!.html
-Document: "2" is not a file!
+line 1 column 2321 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2321 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2337 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 1675 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
 
 ./docs/src/pretty_dbg/lib.rs.html
 Document: "2" is not a file!
 
-line 2 column 54 - Warning: trimming empty <span>
+line 1 column 1947 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 1947 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 1963 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2053 - Warning: <div> isn't allowed in <h1> elements
+line 1 column 2089 - Warning: discarding unexpected </div>
+line 1 column 2106 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2106 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2123 - Warning: discarding unexpected </rustdoc-toolbar>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/pretty_dbg/macro.pretty_dbg.html
+Document: "2" is not a file!
+
+line 1 column 2180 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2180 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2196 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2492 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2492 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2509 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1818 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/pretty_dbg/macro.pretty_dbg!.html
+Document: "2" is not a file!
+
+./docs/pretty_dbg/macro.format_dbg!.html
+Document: "2" is not a file!
+
+./docs/pretty_dbg/all.html
+Document: "2" is not a file!
+
+line 1 column 2235 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2235 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2251 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 1720 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/pretty_dbg/macro.format_dbg.html
+Document: "2" is not a file!
+
+line 1 column 2259 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2259 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2275 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2571 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2571 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2588 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1897 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/pretty_dbg/index.html
+Document: "2" is not a file!
+
+line 1 column 3509 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3509 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 3525 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 3731 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3731 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 3748 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1743 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
 ./docs/index.html
 Document: "2" is not a file!
 
 line 1 column 1 - Warning: missing <!DOCTYPE> declaration
 line 1 column 1 - Warning: inserting missing 'title' element
-./docs/settings.html
-Document: "2" is not a file!
-
-line 2 column 81 - Warning: trimming empty <span>

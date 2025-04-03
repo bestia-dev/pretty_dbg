@@ -1,0 +1,1 @@
+searchState.loadedDescShard("pretty_dbg", 0, "Rust macro pretty_dbg!()\nformat_dbg! is a version of dbg! that uses the formatting …\npretty_dbg! is a copy of the macro dbg!, just with :#? …")
