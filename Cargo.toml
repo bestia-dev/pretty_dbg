@@ -11,7 +11,7 @@ repository = "https://github.com/bestia-dev/pretty_dbg"
 # Allowed categories are listed here <https://crates.io/category_slugs>
 categories = ["programming", "development-tools::debugging","development-tools"]
 # Keyword must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters, at most 5 keywords per crate
-keywords = ["dbg","macro"]
+keywords = ["dbg","macro","maintained","ready-for-use"]
 # publish to crates.io. Only this files.
 publish = true
 include = [
