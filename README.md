@@ -10,11 +10,10 @@
 
  ![dbg](https://img.shields.io/badge/dbg-orange)
  ![macro](https://img.shields.io/badge/macro-orange)
-
-[//]: # (auto_cargo_toml_to_md end)
-
  ![maintained](https://img.shields.io/badge/maintained-green)
  ![ready_for_use](https://img.shields.io/badge/ready_for_use-green)
+ 
+[//]: # (auto_cargo_toml_to_md end)
 
  [![crates.io](https://img.shields.io/crates/v/pretty_dbg.svg)](https://crates.io/crates/pretty_dbg)
  [![Documentation](https://docs.rs/pretty_dbg/badge.svg)](https://docs.rs/pretty_dbg/)
